@@ -185,10 +185,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2025-05-13 13:18:44 / 修改时间：17:27:59" itemprop="dateCreated datePublished" datetime="2025-05-13T13:18:44+08:00">2025-05-13</time>
+              <time title="创建时间：2025-05-13 13:18:44" itemprop="dateCreated datePublished" datetime="2025-05-13T13:18:44+08:00">2025-05-13</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-05-14 21:42:16" itemprop="dateModified" datetime="2025-05-14T21:42:16+08:00">2025-05-14</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -210,13 +216,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-            本笔记为作者复习复旦大学随机课程时整理所得。
-<hr>
-<h1 id="预备知识">1. 预备知识</h1>
+          <p>  本笔记为作者复习复旦大学随机课程时整理所得。<br></p>
+<h1 id="预备知识">1 预备知识</h1>
 <h2 id="单调类方法">1.1 单调类方法</h2>
 <p>我们从一个例题开始：<br> 设<span
-class="math inline">\(\xi,\eta\)</span>为两个n维随机变量，则以下断言等价：<br>
-（1）<span class="math inline">\(\forall x \in R^n,\mathbb{P}(\xi \leq
+class="math inline">\(\xi,\eta\)</span>为两个随机变量，则以下断言等价：<br>
+（1）<span class="math inline">\(\forall x \in R,\mathbb{P}(\xi \leq
 x)=\mathbb{P}(\eta \leq x)\)</span> <br> （2）对任何Borel集 B，<span
 class="math inline">\(\mathbb{P}(\xi \in \rm{B})=\mathbb{P}(\eta \in
 \rm{B})\)</span><br> （3）对任何有界（或非负）Borel可测函数f，<span
@@ -224,7 +229,7 @@ class="math inline">\(\mathbb{E}\rm{f}(\xi)=\mathbb{E}\rm{f}(\eta)\)</span><br>
 事实上注意到<span class="math inline">\(\mathbb{P}(\xi \in
 \rm{B})=\mathbb{E}1_{\rm{B}}\)</span>所以上述的等价命题（1）（2）（3）是逐渐一般化的过程。（2）推（3）由Borel集上的简单函数逼近可得，但（1）推（2）有本质困难。考虑使（2）中等式成立的集合全体<span
 class="math inline">\(\mathcal{B}\)</span>，我们希望它是<span
-class="math inline">\(\sigma\)</span>-代数，这样由（1）中条件可得成立，但事实上难以验证可列并的条件，我们只能由概率的性质给出其对于不交可列并封闭。我们需要新的方法来给出这一证明。<br>
+class="math inline">\(\sigma\)</span>-代数，这样由（1）中条件可得成立，但事实上难以验证可列并的条件（因为他不对有限交封闭），我们只能由概率的性质给出其对于不交可列并封闭。我们需要新的方法来给出这一证明。<br>
   首先给出两个概念，称一个子集为<span
 class="math inline">\(\pi\)</span>-类，如果他对有限交封闭，称一个子集为<span
 class="math inline">\(\lambda\)</span>-类，如果他包含有空集和全集且对补集与不交可列并封闭。注意到任意多<span
@@ -233,7 +238,86 @@ class="math inline">\(\lambda\)</span>-类，因此对任意子集<span
 class="math inline">\(\mathcal{A}\)</span>，唯一存在包含<span
 class="math inline">\(\mathcal{A}\)</span>的最小<span
 class="math inline">\(\lambda\)</span>-类，记作<span
-class="math inline">\(\lambda(\mathcal{A})\)</span>。基于对上述命题的研究，我们尝试给出以下定理。</p>
+class="math inline">\(\lambda(\mathcal{A})\)</span>。基于对上述命题的研究，我们尝试给出以下定理。<br>
+<strong>定理1.1.1</strong> 设<span
+class="math inline">\(\mathcal{F}\)</span>为一个<span
+class="math inline">\(\lambda\)</span>-类，<span
+class="math inline">\(\mathcal{F}_0\)</span>是一个<span
+class="math inline">\(\pi\)</span>-类且<span
+class="math inline">\(\mathcal{F}_0 \subset
+\mathcal{F}\)</span>，则<span
+class="math inline">\(\sigma(\mathcal{F}_0) \subset
+\mathcal{F}\)</span>，简单来说，一个包含<span
+class="math inline">\(\pi\)</span>-类的<span
+class="math inline">\(\lambda\)</span>-类必定包含该<span
+class="math inline">\(\pi\)</span>-类生成的<span
+class="math inline">\(\sigma\)</span>-代数。<br> <strong>证明</strong>
+由<span class="math inline">\(\mathcal{F}\)</span>为<span
+class="math inline">\(\lambda\)</span>-类，我们有<span
+class="math inline">\(\lambda(\mathcal{F}_0) \subset
+\mathcal{F}\)</span>，则只需说明<span
+class="math inline">\(\lambda(\mathcal{F}_0)\)</span>为<span
+class="math inline">\(\sigma\)</span>-代数，也即说明其对有限交封闭即可。<br>
+<span class="math display">\[\forall \mathcal{A} \in
+\lambda,(\mathcal{F}_0) \mathcal{K}[\mathcal{A}]:=\{\rm{B}\in
+\lambda(\mathcal{F}_0): \mathcal{A}\cap\rm{B} \in
+\lambda(\mathcal{F}_0)\}\]</span> 首先验证<span
+class="math inline">\(\mathcal{K}[\mathcal{A}]\)</span>始终为<span
+class="math inline">\(\lambda\)</span>-类，于是由<span
+class="math inline">\(\mathcal{F}_0\subset\mathcal{K}[\mathcal{A}]\)</span>（定义验证即可）得到<span
+class="math inline">\(\lambda(\mathcal{F}_0)\subset\mathcal{K}[\mathcal{A}]\)</span>，故根据定义<span
+class="math inline">\(\lambda(\mathcal{F}_0)\)</span>为<span
+class="math inline">\(\pi\)</span>-类，也即是<span
+class="math inline">\(\sigma\)</span>-代数。<br>
+  对例题中的开区间和Borel集用该定理即得命题成立。<br></p>
+<h2 id="可测性和条件期望">1.2 可测性和条件期望</h2>
+<p>  我们知道一个随机现象对应概率空间<span
+class="math inline">\((\Omega,\mathcal{F},\mathbb{P})\)</span>，那么对于他的子事件域<span
+class="math inline">\(\mathcal{G}\)</span>，我们如果掌握其信息，就是说我们知道其中每一件事是否发生。那么对于一个随机变量<span
+class="math inline">\(X\)</span>，如果<span
+class="math inline">\(X\)</span>在两个事件上取值相同，那么仅凭他的值无法分辨两个事件。所以<span
+class="math inline">\(X\)</span>给出的子事件域<span
+class="math inline">\(\sigma(X)\)</span>为其像内所有开集的原像形成的最小<span
+class="math inline">\(\sigma\)</span>-代数。进而我们有可测性的概念，随机变量<span
+class="math inline">\(Y\)</span>关于<span
+class="math inline">\(\mathcal{G}\)</span>可测是指<span
+class="math inline">\(Y\)</span>的信息被包含在<span
+class="math inline">\(\mathcal{G}\)</span>中，也就是<span
+class="math inline">\(\sigma(Y)\in
+\mathcal{G}\)</span>，即对任何Borel集<span
+class="math inline">\(B\)</span>，<span
+class="math inline">\(Y^{-1}(B)\in \mathcal{G}\)</span>，也即<span
+class="math inline">\(\forall y\in R, \{Y\leq y\}\in
+\mathcal{G}\)</span>。<br>
+  我们考虑真正影响一个子事件域的大小的因素，发现其实只跟那些“最小”的集合有关，也即是分无可分的集合。于是我们称一个非空集合<span
+class="math inline">\(A\in\mathcal{G}\)</span>为<span
+class="math inline">\(\mathcal{G}\)</span>的原子，如果除了空集和自身，他不再包含<span
+class="math inline">\(\mathcal{G}\)</span>中其他元素作为子集。我们从一类简单的情况开始进一步考虑可测随机变量的结构。如果样本空间<span
+class="math inline">\(\Omega\)</span>有有限分类<span
+class="math inline">\(\{\Omega_i:1\leq i \leq
+n\}\)</span>（即其两两不交且并集为<span
+class="math inline">\(\Omega\)</span>），则其生成的子事件域以<span
+class="math inline">\(\Omega_i\)</span>为原子，则关于该子事件域可测的随机变量<span
+class="math inline">\(Y\)</span>应该有形式 <span
+class="math display">\[Y=\sum_{j=1}^{n}a_j 1_{\Omega_j}\]</span>
+  以下这个定理是上述结果更一般的推论。<br> <strong>定理1.2.1</strong>
+随机变量<span class="math inline">\(\rm{Y}\)</span>关于<span
+class="math inline">\(\rm{X}\)</span>可测，即<span
+class="math inline">\(\sigma(\rm{Y})\subset
+\sigma(\rm{X})\)</span>当且仅当<span
+class="math inline">\(Y\)</span>是<span
+class="math inline">\(X\)</span>的函数，即存在Borel可测函数f使<span
+class="math inline">\(\rm{Y}=\rm{f} (X)\)</span><br>
+<strong>证明</strong> 只需对任何Borel可测的g有Borel可测的f使<span
+class="math inline">\(\rm{g}(Y)=\rm{f}(X)\)</span>，通过Borel集上的简单函数逼近即可。<br>
+  至此我们大致讨论完了随机变量关于事件域可测的情况，但事实上我们在生活中不总是能碰到这样的情况，也即是我们不总能获得关于一个随机变量的所有信息，但获得的信息仍有可能影响对随机变量结果的判断。因此我们尝试引入条件期望<span
+class="math inline">\(\mathbb{E}(\rm{X}|\mathcal{F})\)</span>来表示<span
+class="math inline">\(\rm{X}\)</span>在事件域<span
+class="math inline">\(\mathcal{F}\)</span>下的期望。我们希望能够给出条件期望更详细的刻画。<br>
+  还是让我们从离散子事件域开始给出符合直觉的条件期望刻画开始</p>
+<h1 id="随机过程">2 随机过程</h1>
+<h1 id="简单随机游动">3 简单随机游动</h1>
+<h2 id="bernoulli序列与首中时">3.1 Bernoulli序列与首中时</h2>
 
       
     </div>
