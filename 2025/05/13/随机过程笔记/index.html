@@ -28,7 +28,7 @@
 <meta property="og:description" content="本笔记为作者复习复旦大学随机课程时整理所得。 预备知识 单调类方法 我们从一个例题开始： 设\(\xi,\eta\)为两个随机变量，则以下断言等价： （1）\(\forall x \in \mathbb{R},\mathbb{P}(\xi \leq x)&#x3D;\mathbb{P}(\eta \leq x)\)  （2）对任何Borel集 B，\(\mathbb{P}(\xi \in">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-05-13T05:18:44.000Z">
-<meta property="article:modified_time" content="2025-05-18T15:16:25.041Z">
+<meta property="article:modified_time" content="2025-05-19T16:51:26.060Z">
 <meta property="article:author" content="Gongyi Zhuo">
 <meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary">
@@ -196,7 +196,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-05-18 23:16:25" itemprop="dateModified" datetime="2025-05-18T23:16:25+08:00">2025-05-18</time>
+                <time title="修改时间：2025-05-20 00:51:26" itemprop="dateModified" datetime="2025-05-20T00:51:26+08:00">2025-05-20</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -367,11 +367,11 @@ class="math inline">\(\mathbb{E}(\rm{Y}|\mathcal{G})\)</span>，如果<span
 class="math inline">\(\rm{X}\)</span>是一个随机变量，那么<span
 class="math inline">\(\mathbb{E}(\rm{Y}|\rm{X}):=\mathbb{E}(\rm{Y}|\sigma(\rm{X}))\)</span><br>
   条件期望的良定由以下简单的引理保证<br> <strong>引理1.2.3</strong>
-如果<span class="math inline">\(\rm{Y}_1,\rm{Y}_2\)</span>都关于<span
+如果<span class="math inline">\(\rm{Y}_1\)</span>，<span
+class="math inline">\(\rm{Y}_2\)</span>都关于<span
 class="math inline">\(\mathcal{G}\)</span>可测且满足<span
 class="math inline">\(\forall \mathcal{A} \in\mathcal{G}\)</span>，<span
-class="math inline">\(\mathbb{E}(\rm{Y}_1
-1_{\mathcal{A}})=\mathbb{E}(\rm{Y}_2 1_{\mathcal{A}})\)</span>那么<span
+class="math inline">\(\mathbb{E}(\rm{Y}_11_{\mathcal{A}})=\mathbb{E}(\rm{Y}_21_{\mathcal{A}})\)</span>那么<span
 class="math inline">\(\rm{Y}_1=\rm{Y}_2\)</span> a.s.<br>
   如此定义的条件期望满足我们希望的种种性质，包括线性、保序等，在此不再赘述，我们仅仅关注之前在离散子事件域中的结论，将其推广至一般情况：<br>
 <strong>定理1.2.4</strong> 设<span
@@ -532,6 +532,85 @@ class="math display">\[\mathbb{P}(\rm T\lt
 \infty)=\lim_{n\to\infty}\sum^n_{k=1} \mathbb{P}(\rm
 T=2k)=\lim_{n\to\infty}1-u_{2n}=1\]</span></p>
 <h2 id="首达概率公式">首达概率公式</h2>
+<p>  在上一节中我们利用对称随机游走在格点轨道上等概率的性质证明了<span
+class="math inline">\(\mathbb{P}(\rm T\lt
+\infty)=1\)</span>，但这一方法不能很平凡地推广到一般情况，我们还是希望能够更一般地解决这一问题。一个自然的想法是通过好算的<span
+class="math inline">\(\rm u_{2n}\)</span>来推导<span
+class="math inline">\(\rm
+f_{2n}\)</span>。具体思路是先通过首达概率公式将<span
+class="math inline">\(\rm
+f_{2n}:=\mathbb{P}(T=2n)\)</span>与之前所说的<span
+class="math inline">\(\rm u_{2n}\)</span>联系起来，进而通过<span
+class="math inline">\(\mathbb{P}(\rm T\lt \infty)=\sum_{\rm
+n=1}^{\infty} f_{2n}\)</span>得到结果。<br>
+  首达概率公式证明的核心来自于一个直觉，可以从某一时刻开始将原随机游动视为起始点不同的新随机游动，也就是说随机序列<span
+class="math inline">\(\rm X_k&#39;=X_{n+k}-X_n\)</span>，<span
+class="math inline">\(k\geq 0\)</span>是一个与<span
+class="math inline">\((\rm X_j :j\leq n)\)</span>独立且与<span
+class="math inline">\((\rm
+X_t)\)</span>分布相同的随机序列。具体的证明细节验证起来并不复杂。<br>
+<strong>注：</strong> 这也就是之后会讲到的马尔可夫性。<br>
+  有了上述性质以后，首达概率公式的证明就并不复杂。我们有<br> <span
+class="math display">\[
+\begin{align*}
+    \rm u_{2n}=\mathbb{P}(\rm X_{2n}=0)&amp;=\rm
+\sum^{n}_{r=1}\mathbb{P}(\rm X_{2n}=0,T=2r)\\
+    &amp;=\rm \sum^{n}_{r=1}\mathbb{P}(\rm X_{2n-2r}&#39;=0,T=2r)\\
+    &amp;=\rm \sum^{n}_{r=1}f_{2r}u_{2n-2r}
+\end{align*}
+\]</span> 这样就有了将<span class="math inline">\(\rm
+u_{2n}\)</span>和<span class="math inline">\(\rm
+f_{2n}\)</span>联系起来的桥梁。理论上从上述方程组可以解出<span
+class="math inline">\(\rm
+f_{2n}\)</span>。但这并不是一件容易的事，我们需要一个更简单的算法。母函数是一个不错的选择。公式两边乘<span
+class="math inline">\(\rm t^{2n}\)</span>再对<span
+class="math inline">\(\rm n\)</span>求和：<br> <span
+class="math display">\[
+\rm \sum_{n\geq 1} u_{2n}t^{2n}=\rm \sum_{n\geq
+1}\sum^{n}_{r=1}f_{2r}t^{2r}\cdot u_{2n-2r}t^{2n-2r}=\rm \sum_{r\geq
+1}f_{2r}t^{2r}\sum_{n\geq r}u_{2n-2r}t^{2n-2r}
+\]</span> 则记<span class="math inline">\(\rm
+F(t),U(t)\)</span>分别为<span class="math inline">\(\rm (u_n)_{n\geq
+0},(f_n)_{n\geq0}\)</span>的母函数，我们进而有<span
+class="math inline">\(\rm F(t)U(t)=U(t)-1\)</span>而Taylor公式给出了<br>
+<span class="math display">\[\rm U(t)=\sum_{n\geq 0}{(2n)!\over
+(n!)^2}(pq)^nt^{2n}=(1-4pqt^2)^{-{1\over 2}}\]</span> 故<span
+class="math inline">\(\rm F(t)=1-\sqrt{1-4pqt^2}\)</span>，于是<br>
+<span class="math display">\[\rm \mathbb{P}(T\lt \infty)=\lim_{t\uparrow
+1}F(t)=1-|p-q| \]</span> 这样即给出了我们希望研究的结果。</p>
+<h2 id="差分方程">差分方程</h2>
+<p>  差分方程是微分方程的离散形式，也是早期研究随机游动的一个重要方法。下面我们以输光问题为例讲述这一方法。<br>
+  输光问题指的是两个赌资为<span class="math inline">\(\rm
+a,b\)</span>的赌徒甲乙进行简单的掷硬币赌博，直到一方输光为止，求甲输光的概率。将其抽象化为数学模型也就是一个简单随机游动的问题：即从<span
+class="math inline">\(\rm
+a\)</span>位置开始做简单随机游动，直到他触碰到<span
+class="math inline">\(\rm 0\)</span>（输光）或<span
+class="math inline">\(\rm a+b\)</span>（赢下所有），也就是求<span
+class="math inline">\(\mathbb{P}(\rm T_0\lt
+T_{a+b})\)</span>注意到若<span class="math inline">\(\rm
+X=(X_n)\)</span>为简单随机游动，则<span class="math inline">\(\rm
+X_n^x=X_n+x\)</span>是从<span class="math inline">\(\rm
+x\)</span>出发的简单随机游动。差分方程的基本思路就是利用从<span
+class="math inline">\(\rm
+x\)</span>开始的随机游动左走一步，右走一步后分别变为<span
+class="math inline">\(\rm x-1\)</span>开始的随机游动和<span
+class="math inline">\(\rm
+x+1\)</span>开始的随机游动，通过边界条件和方程给出结果。在计算当中首中时和进入时无差别，不妨用进入时。<br>
+  <span class="math inline">\(\rm g_x\)</span>代表从<span
+class="math inline">\(\rm x\)</span>开始的简单随机游动下的<span
+class="math inline">\(\mathbb{P}(\rm T_0\lt
+T_{a+b})\)</span>。根据进入时，我们有边界条件<span
+class="math inline">\(\rm g_0=1,g_{a+b}=0\)</span>而当<span
+class="math inline">\(0\lt \rm x\lt
+a+b\)</span>，随机游动再走一步就变成<span class="math inline">\(\rm
+g_{x-1},g_{x+1}\)</span>，根据全概率公式我们给出差分方程：<br> <span
+class="math display">\[\rm g_x=pg_{x+1}+qg_{x-1}\]</span>
+类似地考虑赌博地持续时间<span class="math inline">\(\rm T=T_0\wedge
+T_{a+b}\)</span>，他的期望（记作<span class="math inline">\(\rm
+E_x\)</span>）通过差分方程<span class="math inline">\(\rm
+E_x=pE_{x+1}+qE_{x-1}+1\)</span>及边界条件<span
+class="math inline">\(\rm E_0=E_{a+b}=0\)</span>给出。</p>
+<h2 id="随机游动的马氏性">随机游动的马氏性</h2>
 
     </div>
 
@@ -612,7 +691,7 @@ T=2k)=\lim_{n\to\infty}1-u_{2n}=1\]</span></p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text">预备知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E8%B0%83%E7%B1%BB%E6%96%B9%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">单调类方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E6%B5%8B%E6%80%A7%E5%92%8C%E6%9D%A1%E4%BB%B6%E6%9C%9F%E6%9C%9B"><span class="nav-number">1.2.</span> <span class="nav-text">可测性和条件期望</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">随机过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E9%9A%8F%E6%9C%BA%E6%B8%B8%E5%8A%A8"><span class="nav-number">3.</span> <span class="nav-text">简单随机游动</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#bernoulli%E5%BA%8F%E5%88%97%E4%B8%8E%E9%A6%96%E4%B8%AD%E6%97%B6"><span class="nav-number">3.1.</span> <span class="nav-text">Bernoulli序列与首中时</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8D%E5%B0%84%E5%8E%9F%E7%90%86"><span class="nav-number">3.2.</span> <span class="nav-text">反射原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A6%96%E8%BE%BE%E6%A6%82%E7%8E%87%E5%85%AC%E5%BC%8F"><span class="nav-number">3.3.</span> <span class="nav-text">首达概率公式</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text">预备知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E8%B0%83%E7%B1%BB%E6%96%B9%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">单调类方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E6%B5%8B%E6%80%A7%E5%92%8C%E6%9D%A1%E4%BB%B6%E6%9C%9F%E6%9C%9B"><span class="nav-number">1.2.</span> <span class="nav-text">可测性和条件期望</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">随机过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E9%9A%8F%E6%9C%BA%E6%B8%B8%E5%8A%A8"><span class="nav-number">3.</span> <span class="nav-text">简单随机游动</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#bernoulli%E5%BA%8F%E5%88%97%E4%B8%8E%E9%A6%96%E4%B8%AD%E6%97%B6"><span class="nav-number">3.1.</span> <span class="nav-text">Bernoulli序列与首中时</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8D%E5%B0%84%E5%8E%9F%E7%90%86"><span class="nav-number">3.2.</span> <span class="nav-text">反射原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A6%96%E8%BE%BE%E6%A6%82%E7%8E%87%E5%85%AC%E5%BC%8F"><span class="nav-number">3.3.</span> <span class="nav-text">首达概率公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%AE%E5%88%86%E6%96%B9%E7%A8%8B"><span class="nav-number">3.4.</span> <span class="nav-text">差分方程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E6%B8%B8%E5%8A%A8%E7%9A%84%E9%A9%AC%E6%B0%8F%E6%80%A7"><span class="nav-number">3.5.</span> <span class="nav-text">随机游动的马氏性</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
