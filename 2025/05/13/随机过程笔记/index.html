@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"jealnous-cocktail.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"jealnous-cocktail.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="本笔记为作者复习复旦大学随机课程时整理所得。 预备知识 单调类方法 我们从一个例题开始： 设\(\xi,\eta\)为两个随机变量，则以下断言等价： （1）\(\forall x \in \mathbb{R},\mathbb{P}(\xi \leq x)&#x3D;\mathbb{P}(\eta \leq x)\)  （2）对任何Borel集 B，\(\mathbb{P}(\xi \in">
@@ -209,6 +209,20 @@
             </span>
 
           
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2025/05/13/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2025/05/13/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
@@ -869,7 +883,7 @@ y_k}1_{\{0\leq y_1\lt\cdots\lt y_k\}}\]</span>
 
           </div>
           
-    <div class="comments" id="utterances-container"></div>
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -1085,18 +1099,32 @@ y_k}1_{\{0\leq y_1\lt\cdots\lt y_k\}}\]</span>
 
   
 
+
 <script>
-NexT.utils.loadComments(document.querySelector('#utterances-container'), () => {
-    // if (typeof parcelRequire === 'function') { return; }
-    var js = document.createElement('script');
-    js.type = 'text/javascript';
-    js.src = 'https://utteranc.es/client.js';
-    js.async = true;
-    js.crossorigin = 'anonymous';
-    js.setAttribute('repo', 'git@github.com:jealnous-cocktail/jealnous-cocktail.github.io.git');
-    js.setAttribute('issue-term', 'pathname');
-    js.setAttribute('theme', 'github-light');
-    document.getElementById('utterances-container').appendChild(js);
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : '17X0NWTRhOKnym2SUUHj1PW0-gzGzoHsz',
+      appKey     : 'w67cFpMyGNoDjRTHgf20MbVT',
+      placeholder: "说点什么吧~",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
 });
 </script>
 
