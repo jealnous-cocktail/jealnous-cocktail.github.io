@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"jealnous-cocktail.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="单调类方法 我们从一个例题开始： 设\(\xi,\eta\)为两个随机变量，则以下断言等价： （1）\(\forall x \in \mathbb{R},\mathbb{P}(\xi \leq x)&#x3D;\mathbb{P}(\eta \leq x)\)  （2）对任何Borel集 B，\(\mathbb{P}(\xi \in \rm{B})&#x3D;\mathbb{P}(\eta \in \rm{">
+<meta property="og:type" content="article">
+<meta property="og:title" content="随机过程笔记（一）——预备知识">
+<meta property="og:url" content="https://jealnous-cocktail.github.io/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/index.html">
+<meta property="og:site_name" content="奇怪的地方">
+<meta property="og:description" content="单调类方法 我们从一个例题开始： 设\(\xi,\eta\)为两个随机变量，则以下断言等价： （1）\(\forall x \in \mathbb{R},\mathbb{P}(\xi \leq x)&#x3D;\mathbb{P}(\eta \leq x)\)  （2）对任何Borel集 B，\(\mathbb{P}(\xi \in \rm{B})&#x3D;\mathbb{P}(\eta \in \rm{">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-05-25T05:48:15.000Z">
+<meta property="article:modified_time" content="2025-05-25T06:08:23.184Z">
+<meta property="article:author" content="Gongyi Zhuo">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="随机分析">
+<meta property="article:tag" content="fdu数学课">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://jealnous-cocktail.github.io/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>随机过程笔记（一）——预备知识 | 奇怪的地方</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">奇怪的地方</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://jealnous-cocktail.github.io/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Gongyi Zhuo">
+      <meta itemprop="description" content="似乎属于一个复旦大学的数学系学生，有着一些数学和生活的碎片">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="奇怪的地方">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          随机过程笔记（一）——预备知识
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-05-25 13:48:15 / 修改时间：14:08:23" itemprop="dateCreated datePublished" datetime="2025-05-25T13:48:15+08:00">2025-05-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">随机分析</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="单调类方法">单调类方法</h1>
+<p>我们从一个例题开始：<br> 设<span
+class="math inline">\(\xi,\eta\)</span>为两个随机变量，则以下断言等价：<br>
+（1）<span class="math inline">\(\forall x \in \mathbb{R},\mathbb{P}(\xi
+\leq x)=\mathbb{P}(\eta \leq x)\)</span> <br> （2）对任何Borel集
+B，<span class="math inline">\(\mathbb{P}(\xi \in
+\rm{B})=\mathbb{P}(\eta \in \rm{B})\)</span><br>
+（3）对任何有界（或非负）Borel可测函数f，<span
+class="math inline">\(\mathbb{E}\rm{f}(\xi)=\mathbb{E}\rm{f}(\eta)\)</span><br>
+<span id="more"></span>   事实上注意到<span class="math inline">\(\mathbb{P}(\xi \in
+\rm{B})=\mathbb{E}1_{\rm{B}}\)</span>所以上述的等价命题（1）（2）（3）是逐渐一般化的过程。（2）推（3）由Borel集上的简单函数逼近可得，但（1）推（2）有本质困难。考虑使（2）中等式成立的集合全体<span
+class="math inline">\(\mathcal{B}\)</span>，我们希望它是<span
+class="math inline">\(\sigma\)</span>-代数，这样由（1）中条件可得成立，但事实上难以验证可列并的条件（因为他不对有限交封闭），我们只能由概率的性质给出其对于不交可列并封闭。我们需要新的方法来给出这一证明。<br>
+  首先给出两个概念，称一个子集为<span
+class="math inline">\(\pi\)</span>-类，如果他对有限交封闭，称一个子集为<span
+class="math inline">\(\lambda\)</span>-类，如果他包含有空集和全集且对补集与不交可列并封闭。注意到任意多<span
+class="math inline">\(\lambda\)</span>-类的交为<span
+class="math inline">\(\lambda\)</span>-类，因此对任意子集<span
+class="math inline">\(\mathcal{A}\)</span>，唯一存在包含<span
+class="math inline">\(\mathcal{A}\)</span>的最小<span
+class="math inline">\(\lambda\)</span>-类，记作<span
+class="math inline">\(\lambda(\mathcal{A})\)</span>。基于对上述命题的研究，我们尝试给出以下定理。<br>
+<strong>定理1.1.1</strong> 设<span
+class="math inline">\(\mathcal{F}\)</span>为一个<span
+class="math inline">\(\lambda\)</span>-类，<span
+class="math inline">\(\mathcal{F}_0\)</span>是一个<span
+class="math inline">\(\pi\)</span>-类且<span
+class="math inline">\(\mathcal{F}_0 \subset
+\mathcal{F}\)</span>，则<span
+class="math inline">\(\sigma(\mathcal{F}_0) \subset
+\mathcal{F}\)</span>，简单来说，一个包含<span
+class="math inline">\(\pi\)</span>-类的<span
+class="math inline">\(\lambda\)</span>-类必定包含该<span
+class="math inline">\(\pi\)</span>-类生成的<span
+class="math inline">\(\sigma\)</span>-代数。<br> <strong>证明</strong>
+由<span class="math inline">\(\mathcal{F}\)</span>为<span
+class="math inline">\(\lambda\)</span>-类，我们有<span
+class="math inline">\(\lambda(\mathcal{F}_0) \subset
+\mathcal{F}\)</span>，则只需说明<span
+class="math inline">\(\lambda(\mathcal{F}_0)\)</span>为<span
+class="math inline">\(\sigma\)</span>-代数，也即说明其对有限交封闭即可。<br>
+<span class="math display">\[\forall \mathcal{A} \in
+\lambda(\mathcal{F}_0)， \mathcal{K}[\mathcal{A}]:=\{\rm{B}\in
+\lambda(\mathcal{F}_0): \mathcal{A}\cap\rm{B} \in
+\lambda(\mathcal{F}_0)\}\]</span> 首先验证<span
+class="math inline">\(\mathcal{K}[\mathcal{A}]\)</span>始终为<span
+class="math inline">\(\lambda\)</span>-类，于是由<span
+class="math inline">\(\mathcal{F}_0\subset\mathcal{K}[\mathcal{A}]\)</span>（定义验证即可）得到<span
+class="math inline">\(\lambda(\mathcal{F}_0)\subset\mathcal{K}[\mathcal{A}]\)</span>，故根据定义<span
+class="math inline">\(\lambda(\mathcal{F}_0)\)</span>为<span
+class="math inline">\(\pi\)</span>-类，也即是<span
+class="math inline">\(\sigma\)</span>-代数。<br>
+  对例题中的开区间和Borel集用该定理即得命题成立。<br></p>
+<h1 id="可测性和条件期望">可测性和条件期望</h1>
+<p>  我们知道一个随机现象对应概率空间<span
+class="math inline">\((\Omega,\mathcal{F},\mathbb{P})\)</span>，那么对于他的子事件域<span
+class="math inline">\(\mathcal{G}\)</span>，我们如果掌握其信息，就是说我们知道其中每一件事是否发生。那么对于一个随机变量<span
+class="math inline">\(X\)</span>，如果<span
+class="math inline">\(X\)</span>在两个事件上取值相同，那么仅凭他的值无法分辨两个事件。所以<span
+class="math inline">\(X\)</span>给出的子事件域<span
+class="math inline">\(\sigma(X)\)</span>为其像内所有开集的原像形成的最小<span
+class="math inline">\(\sigma\)</span>-代数。进而我们有可测性的概念，随机变量<span
+class="math inline">\(Y\)</span>关于<span
+class="math inline">\(\mathcal{G}\)</span>可测是指<span
+class="math inline">\(Y\)</span>的信息被包含在<span
+class="math inline">\(\mathcal{G}\)</span>中，也就是<span
+class="math inline">\(\sigma(Y)\in
+\mathcal{G}\)</span>，即对任何Borel集<span
+class="math inline">\(B\)</span>，<span
+class="math inline">\(Y^{-1}(B)\in \mathcal{G}\)</span>，也即<span
+class="math inline">\(\forall y\in \mathbb{R}, \{Y\leq y\}\in
+\mathcal{G}\)</span>。<br>
+  我们考虑真正影响一个子事件域的大小的因素，发现其实只跟那些“最小”的集合有关，也即是分无可分的集合。于是我们称一个非空集合<span
+class="math inline">\(A\in\mathcal{G}\)</span>为<span
+class="math inline">\(\mathcal{G}\)</span>的原子，如果除了空集和自身，他不再包含<span
+class="math inline">\(\mathcal{G}\)</span>中其他元素作为子集。我们从一类简单的情况开始进一步考虑可测随机变量的结构。如果样本空间<span
+class="math inline">\(\Omega\)</span>有有限分类<span
+class="math inline">\(\{\Omega_i:1\leq i \leq
+n\}\)</span>（即其两两不交且并集为<span
+class="math inline">\(\Omega\)</span>），则其生成的子事件域以<span
+class="math inline">\(\Omega_i\)</span>为原子，则关于该子事件域可测的随机变量<span
+class="math inline">\(Y\)</span>应该有形式 <span
+class="math display">\[Y=\sum_{j=1}^{n}a_j 1_{\Omega_j}\]</span>
+  以下这个定理是上述结果更一般的推论。<br> <strong>定理1.2.1</strong>
+随机变量<span class="math inline">\(\rm{Y}\)</span>关于<span
+class="math inline">\(\rm{X}\)</span>可测，即<span
+class="math inline">\(\sigma(\rm{Y})\subset
+\sigma(\rm{X})\)</span>当且仅当<span
+class="math inline">\(Y\)</span>是<span
+class="math inline">\(X\)</span>的函数，即存在Borel可测函数f使<span
+class="math inline">\(\rm{Y}=\rm{f} (X)\)</span><br>
+<strong>证明</strong> 只需对任何Borel可测的g有Borel可测的f使<span
+class="math inline">\(\rm{g}(Y)=\rm{f}(X)\)</span>，通过Borel集上的简单函数逼近即可。<br>
+  至此我们大致讨论完了随机变量关于事件域可测的情况，但事实上我们在生活中不总是能碰到这样的情况，也即是我们不总能获得关于一个随机变量的所有信息，但获得的信息仍有可能影响对随机变量结果的判断。因此我们尝试引入条件期望<span
+class="math inline">\(\mathbb{E}(\rm{X}|\mathcal{F})\)</span>来表示<span
+class="math inline">\(\rm{X}\)</span>在事件域<span
+class="math inline">\(\mathcal{F}\)</span>下的期望。我们希望能够给出条件期望更详细的刻画。<br>
+  还是让我们从离散子事件域开始给出符合直觉的条件期望刻画开始。直觉上来说，条件期望和条件概率密不可分，我们有全概率公式
+<span
+class="math display">\[\mathbb{P}(\mathcal{A})=\sum_{j=1}^{n}\mathbb{P}(\mathcal{A}|\Omega_j)\mathbb{P}(\Omega_j)\]</span>
+注意到事件<span
+class="math inline">\(\mathcal{A}\)</span>可以看作随机变量<span
+class="math inline">\(1_{\mathcal{A}}\)</span>，且我们有<span
+class="math inline">\(\mathbb{P}(\mathcal{A})=\mathbb{E}(1_{\mathcal{A}})\)</span>，故通过逼近我们将其推广为随机变量的情况：
+<span
+class="math display">\[\mathbb{E}\rm{Y}=\sum_{j=1}^{n}\mathbb{E}(\rm{Y}|\Omega_j)\mathbb{P}(\Omega_j)\]</span>
+其中<span class="math inline">\(\rm{Y}\)</span>为可积随机变量，<span
+class="math inline">\(\mathbb{E}(\rm{Y}|\Omega_j)\)</span>代表了事件<span
+class="math inline">\(\Omega_j\)</span>上的平均。也即更一般地对任何事件<span
+class="math inline">\(\rm{B}\)</span>，我们有 <span
+class="math display">\[\mathbb{E}(\rm{Y}|\rm{B})=
+{\mathbb{E}(\rm{Y}1_{\mathcal{\rm{B}}})\over\mathbb{P}(\rm{B})}\]</span>
+  仔细观察随机变量版本地全概率公式右侧，其为随机变量<span
+class="math inline">\(\xi=\sum_{j=1}^{n}\mathbb{P}(\mathcal{A}|\Omega_j)1_{\Omega_j}\)</span>的期望，该随机变量在原子上的取值是<span
+class="math inline">\(\rm{Y}\)</span>在该原子上的平均，因此自然而然把这个随机变量称为<span
+class="math inline">\(\rm{Y}\)</span>关于该离散事件域<span
+class="math inline">\(\mathcal{G}\)</span>的条件期望<span
+class="math inline">\(\mathbb{E}(\rm{Y}|\mathcal{G})\)</span>。我们进一步给出如下引理，证明只需用定义验证即可。<br>
+<strong>引理1.2.2</strong> 下面三命题等价：<br>   1.<span
+class="math inline">\(\rm{Y}&#39;=\mathbb{E}(\rm{Y}|\mathcal{G})\)</span><br>
+  2.<span class="math inline">\(\rm{Y}&#39;\)</span>是<span
+class="math inline">\(\mathcal{G}\)</span>可测的，且对任何随机变量<span
+class="math inline">\(\rm{X}\)</span>有<span
+class="math inline">\(\mathbb{E}(\rm{Y}-\rm{Y}&#39;)^2
+\leq\mathbb{E}(\rm{Y}-\rm{X})^2\)</span><br>   3.<span
+class="math inline">\(\rm{Y}&#39;\)</span>是<span
+class="math inline">\(\mathcal{G}\)</span>可测的且<span
+class="math inline">\(\forall \mathcal{A}
+\in\mathcal{G}\)</span>我们有<span
+class="math inline">\(\mathbb{E}(\rm{Y}&#39;1_{\mathcal{A}})=\mathbb{E}(\rm{Y}1_{\mathcal{A}})\)</span><br>
+  上面这个引理很好地给出了条件期望的另两个刻画，2表明在直观上条件期望<span
+class="math inline">\(\mathbb{E}(\rm{Y}|\mathcal{G})\)</span>是所有已知信息（<span
+class="math inline">\(\mathcal{G}\)</span>可测）下离原本随机变量最近的，3给出了一种判断条件期望的好方法。让我们结束在简单情况下的讨论并基于此给出条件期望的一般定义。<br>
+<strong>定义</strong> 设<span
+class="math inline">\(\rm{Y}\)</span>为可积随机变量，<span
+class="math inline">\(\mathcal{G}\)</span>是一个子事件域，那么存在唯一的关于<span
+class="math inline">\(\mathcal{G}\)</span>可测的随机变量<span
+class="math inline">\(\rm{Y}&#39;\)</span>，满足<span
+class="math inline">\(\forall \mathcal{A} \in\mathcal{G} ,
+\mathbb{E}(\rm{Y}&#39;1_{\mathcal{A}})=\mathbb{E}(\rm{Y}1_{\mathcal{A}})\)</span>，称为<span
+class="math inline">\(\rm{Y}\)</span>关于<span
+class="math inline">\(\mathcal{G}\)</span>的条件期望，记作<span
+class="math inline">\(\mathbb{E}(\rm{Y}|\mathcal{G})\)</span>，如果<span
+class="math inline">\(\rm{X}\)</span>是一个随机变量，那么<span
+class="math inline">\(\mathbb{E}(\rm{Y}|\rm{X}):=\mathbb{E}(\rm{Y}|\sigma(\rm{X}))\)</span><br>
+  条件期望的良定由以下简单的引理保证<br> <strong>引理1.2.3</strong>
+如果<span class="math inline">\(\rm{Y}_1\)</span>，<span
+class="math inline">\(\rm{Y}_2\)</span>都关于<span
+class="math inline">\(\mathcal{G}\)</span>可测且满足<span
+class="math inline">\(\forall \mathcal{A} \in\mathcal{G}\)</span>，<span
+class="math inline">\(\mathbb{E}(\rm{Y}_11_{\mathcal{A}})=\mathbb{E}(\rm{Y}_21_{\mathcal{A}})\)</span>那么<span
+class="math inline">\(\rm{Y}_1=\rm{Y}_2\)</span> a.s.<br>
+  如此定义的条件期望满足我们希望的种种性质，包括线性、保序等，在此不再赘述，我们仅仅关注之前在离散子事件域中的结论，将其推广至一般情况：<br>
+<strong>定理1.2.4</strong> 设<span
+class="math inline">\(\rm{Y}\)</span>为平方可积随机变量，<span
+class="math inline">\(\mathcal{G}\)</span>是一个子事件域，则<span
+class="math inline">\(\mathbb{E}(\rm{Y}-\mathbb{E}(\rm{Y}|\mathcal{G}))^2=\inf
+\{\mathbb{E}(\rm{Y}-\rm{X})^2:\rm{X}为关于\mathcal{G}可测的平方可积随机变量\}\)</span><br>
+<strong>证明</strong> 与离散子事件域中的证明类似： <span
+class="math display">\[
+\begin{align*}
+\mathbb{E}(\rm{Y}-\rm{X})^2&amp;=\mathbb{E}(\rm{Y}-\mathbb{E}(\rm{Y}|\mathcal{G}))^2+\mathbb{E}(\mathbb{E}(\rm{Y}|\mathcal{G})-\rm{X})^2+2\mathbb{E}[(\rm{Y}-\mathbb{E}(\rm{Y}|\mathcal{G}))(\mathbb{E}(\rm{Y}|\mathcal{G})-\rm{X})]\\
+&amp;=\mathbb{E}(\rm{Y}-\mathbb{E}(\rm{Y}|\mathcal{G}))^2+\mathbb{E}(\mathbb{E}(\rm{Y}|\mathcal{G})-\rm{X})^2
+\end{align*}
+\]</span> 我们再给出条件期望的另一重要性质——条件期望的Jensen不等式<br>
+<strong>定理1.2.5（条件期望的Jensen不等式）</strong> 当f凸时， <span
+class="math display">\[\rm{f}(\mathbb{E}(\rm{X}|\mathcal{G}))\leq\mathbb{E}(f(\rm{X})|\mathcal{G})\]</span>
+<strong>证明</strong> 熟知凸函数性质<span class="math inline">\(\forall
+\rm{x},x_0\in \mathbb{R}\)</span> <span
+class="math display">\[\rm{f}(x)\geq\rm{f}(x_0)+f&#39;(x_0)(x-x_0)\]</span>
+将<span
+class="math inline">\(\rm{X},\mathbb{E}(\rm{X}|\mathcal{G})\)</span>代入得到
+<span
+class="math display">\[\rm{f}(X)\geq\rm{f}(\mathbb{E}(\rm{X}|\mathcal{G}))+f&#39;(\mathbb{E}(\rm{X}|\mathcal{G}))(X-\mathbb{E}(\rm{X}|\mathcal{G}))\]</span>
+两边对<span
+class="math inline">\(\mathcal{G}\)</span>取条件期望得到定理结论。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"># 数学</a>
+              <a href="/tags/%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/" rel="tag"># 随机分析</a>
+              <a href="/tags/fdu%E6%95%B0%E5%AD%A6%E8%AF%BE/" rel="tag"># fdu数学课</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/05/13/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0(%E6%80%BB%E9%9B%86&%E7%B4%A2%E5%BC%95)/" rel="prev" title="随机过程笔记（总集&索引）">
+      <i class="fa fa-chevron-left"></i> 随机过程笔记（总集&索引）
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E7%AE%80%E5%8D%95%E9%9A%8F%E6%9C%BA%E6%B8%B8%E5%8A%A8/" rel="next" title="随机过程笔记（二）——简单随机游动">
+      随机过程笔记（二）——简单随机游动 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%95%E8%B0%83%E7%B1%BB%E6%96%B9%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">单调类方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%AF%E6%B5%8B%E6%80%A7%E5%92%8C%E6%9D%A1%E4%BB%B6%E6%9C%9F%E6%9C%9B"><span class="nav-number">2.</span> <span class="nav-text">可测性和条件期望</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Gongyi Zhuo</p>
+  <div class="site-description" itemprop="description">似乎属于一个复旦大学的数学系学生，有着一些数学和生活的碎片</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Gongyi Zhuo</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : '17X0NWTRhOKnym2SUUHj1PW0-gzGzoHsz',
+      appKey     : 'w67cFpMyGNoDjRTHgf20MbVT',
+      placeholder: "说点什么吧~",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

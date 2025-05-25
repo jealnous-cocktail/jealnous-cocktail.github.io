@@ -21,16 +21,21 @@
   </script>
 
   <meta name="description" content="似乎属于一个复旦大学的数学系学生，有着一些数学和生活的碎片">
-<meta property="og:type" content="website">
-<meta property="og:title" content="奇怪的地方">
-<meta property="og:url" content="https://jealnous-cocktail.github.io/archives/2025/05/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="随机过程笔记（四）——马氏链">
+<meta property="og:url" content="https://jealnous-cocktail.github.io/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89%E2%80%94%E2%80%94%E9%A9%AC%E6%B0%8F%E9%93%BE/index.html">
 <meta property="og:site_name" content="奇怪的地方">
 <meta property="og:description" content="似乎属于一个复旦大学的数学系学生，有着一些数学和生活的碎片">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-05-25T05:49:55.000Z">
+<meta property="article:modified_time" content="2025-05-25T05:56:29.184Z">
 <meta property="article:author" content="Gongyi Zhuo">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="随机分析">
+<meta property="article:tag" content="fdu数学课">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://jealnous-cocktail.github.io/archives/2025/05/">
+<link rel="canonical" href="https://jealnous-cocktail.github.io/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89%E2%80%94%E2%80%94%E9%A9%AC%E6%B0%8F%E9%93%BE/">
 
 
 <script id="page-configurations">
@@ -38,12 +43,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>归档 | 奇怪的地方</title>
+  <title>随机过程笔记（四）——马氏链 | 奇怪的地方</title>
   
 
 
@@ -156,176 +161,118 @@
         <div class="content-wrap">
           
 
-          <div class="content archive">
+          <div class="content post posts-expand">
             
 
+    
   
   
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://jealnous-cocktail.github.io/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89%E2%80%94%E2%80%94%E9%A9%AC%E6%B0%8F%E9%93%BE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Gongyi Zhuo">
+      <meta itemprop="description" content="似乎属于一个复旦大学的数学系学生，有着一些数学和生活的碎片">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="奇怪的地方">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          随机过程笔记（四）——马氏链
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-05-25 13:49:55 / 修改时间：13:56:29" itemprop="dateCreated datePublished" datetime="2025-05-25T13:49:55+08:00">2025-05-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">随机分析</span></a>
+                </span>
+            </span>
+
+          
   
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 7 篇日志。 继续努力。</span>
-      </div>
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89%E2%80%94%E2%80%94%E9%A9%AC%E6%B0%8F%E9%93%BE/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89%E2%80%94%E2%80%94%E9%A9%AC%E6%B0%8F%E9%93%BE/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2025</span>
+        
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2025-05-25T13:50:34+08:00"
-              content="2025-05-25">
-          05-25
-        </time>
-      </div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"># 数学</a>
+              <a href="/tags/%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/" rel="tag"># 随机分析</a>
+              <a href="/tags/fdu%E6%95%B0%E5%AD%A6%E8%AF%BE/" rel="tag"># fdu数学课</a>
+          </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89%E2%80%94%E2%80%94%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B%E4%B8%8E%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8/" itemprop="url">
-            <span itemprop="name">随机过程笔记（五）——泊松过程与布朗运动</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2025-05-25T13:49:55+08:00"
-              content="2025-05-25">
-          05-25
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89%E2%80%94%E2%80%94%E9%A9%AC%E6%B0%8F%E9%93%BE/" itemprop="url">
-            <span itemprop="name">随机过程笔记（四）——马氏链</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2025-05-25T13:49:30+08:00"
-              content="2025-05-25">
-          05-25
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E9%9E%85%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/" itemprop="url">
-            <span itemprop="name">随机过程笔记（三）——鞅及其应用</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2025-05-25T13:49:04+08:00"
-              content="2025-05-25">
-          05-25
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E7%AE%80%E5%8D%95%E9%9A%8F%E6%9C%BA%E6%B8%B8%E5%8A%A8/" itemprop="url">
-            <span itemprop="name">随机过程笔记（二）——简单随机游动</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2025-05-25T13:48:15+08:00"
-              content="2025-05-25">
-          05-25
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/" itemprop="url">
-            <span itemprop="name">随机过程笔记（一）——预备知识</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2025-05-13T13:18:44+08:00"
-              content="2025-05-13">
-          05-13
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2025/05/13/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0(%E6%80%BB%E9%9B%86&%E7%B4%A2%E5%BC%95)/" itemprop="url">
-            <span itemprop="name">随机过程笔记（总集&索引）</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2025-05-13T12:50:28+08:00"
-              content="2025-05-13">
-          05-13
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2025/05/13/%E5%8F%88%E6%98%AF%E4%B8%80%E5%B9%B4%E6%AF%95%E4%B8%9A%E5%AD%A3/" itemprop="url">
-            <span itemprop="name">又是一年毕业季</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
+        
 
 
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E9%9E%85%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/" rel="prev" title="随机过程笔记（三）——鞅及其应用">
+      <i class="fa fa-chevron-left"></i> 随机过程笔记（三）——鞅及其应用
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89%E2%80%94%E2%80%94%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B%E4%B8%8E%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8/" rel="next" title="随机过程笔记（五）——泊松过程与布朗运动">
+      随机过程笔记（五）——泊松过程与布朗运动 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
-  </div>
+      </footer>
+    
+  </article>
   
   
-  
-
   
 
 
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {

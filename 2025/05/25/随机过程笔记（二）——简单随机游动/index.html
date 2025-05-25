@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"jealnous-cocktail.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Bernoulli序列与首中时   我们现在来研究简单随机游动，在一条直线上从0开始，每步有\(\rm{p}\)的概率向右，\(\rm{q}\)的概率向左，这其实是一直重复Bernoulli实验，即位置变化在每一步分别以\(\rm{p},q(p+q&#x3D;1)\)的概率为1,-1,设第n次实验的结果为\(\xi_n\in\{1,-1\}\)，那么\(\{\xi_n\}\)是一个独立同分布的随机变量序列">
+<meta property="og:type" content="article">
+<meta property="og:title" content="随机过程笔记（二）——简单随机游动">
+<meta property="og:url" content="https://jealnous-cocktail.github.io/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E7%AE%80%E5%8D%95%E9%9A%8F%E6%9C%BA%E6%B8%B8%E5%8A%A8/index.html">
+<meta property="og:site_name" content="奇怪的地方">
+<meta property="og:description" content="Bernoulli序列与首中时   我们现在来研究简单随机游动，在一条直线上从0开始，每步有\(\rm{p}\)的概率向右，\(\rm{q}\)的概率向左，这其实是一直重复Bernoulli实验，即位置变化在每一步分别以\(\rm{p},q(p+q&#x3D;1)\)的概率为1,-1,设第n次实验的结果为\(\xi_n\in\{1,-1\}\)，那么\(\{\xi_n\}\)是一个独立同分布的随机变量序列">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-05-25T05:49:04.000Z">
+<meta property="article:modified_time" content="2025-05-25T06:09:26.170Z">
+<meta property="article:author" content="Gongyi Zhuo">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="随机分析">
+<meta property="article:tag" content="fdu数学课">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://jealnous-cocktail.github.io/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E7%AE%80%E5%8D%95%E9%9A%8F%E6%9C%BA%E6%B8%B8%E5%8A%A8/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>随机过程笔记（二）——简单随机游动 | 奇怪的地方</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">奇怪的地方</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://jealnous-cocktail.github.io/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E7%AE%80%E5%8D%95%E9%9A%8F%E6%9C%BA%E6%B8%B8%E5%8A%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Gongyi Zhuo">
+      <meta itemprop="description" content="似乎属于一个复旦大学的数学系学生，有着一些数学和生活的碎片">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="奇怪的地方">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          随机过程笔记（二）——简单随机游动
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-05-25 13:49:04 / 修改时间：14:09:26" itemprop="dateCreated datePublished" datetime="2025-05-25T13:49:04+08:00">2025-05-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">随机分析</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E7%AE%80%E5%8D%95%E9%9A%8F%E6%9C%BA%E6%B8%B8%E5%8A%A8/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E7%AE%80%E5%8D%95%E9%9A%8F%E6%9C%BA%E6%B8%B8%E5%8A%A8/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="bernoulli序列与首中时">Bernoulli序列与首中时</h1>
+<p>  我们现在来研究简单随机游动，在一条直线上从0开始，每步有<span
+class="math inline">\(\rm{p}\)</span>的概率向右，<span
+class="math inline">\(\rm{q}\)</span>的概率向左，这其实是一直重复Bernoulli实验，即位置变化在每一步分别以<span
+class="math inline">\(\rm{p},q(p+q=1)\)</span>的概率为1,-1,设第n次实验的结果为<span
+class="math inline">\(\xi_n\in\{1,-1\}\)</span>，那么<span
+class="math inline">\(\{\xi_n\}\)</span>是一个独立同分布的随机变量序列，称为Berboulli序列。上述描述看起来显然且直观，但严格的定义需要构造符合要求的概率空间使得其上有Bernoulli序列。事实上，取<span
+class="math inline">\(\xi\)</span>是区间<span
+class="math inline">\([0,1]\)</span>上均匀分布的随机变量，则考虑其无限二进制表示的第n位小数<span
+class="math inline">\(\eta_n\)</span>，取值为0和1，不难验证<span
+class="math inline">\(\eta_n\)</span>构成一个Bernoulli序列。我们进而给出简单随机游动的严格表述，在取值为1，-1的Bernoulli序列<span
+class="math inline">\(\{\eta_n\}\)</span>中，我们设：<br> <span
+class="math display">\[\rm{X}_0=0,X_n=\xi_1+\xi_2+\cdots+\xi_n,n\geq1\]</span>
+<span id="more"></span>
+  这样我们给出了简单随机游动的严格构造。简单随即游动通常分为三种：右偏<span
+class="math inline">\(\rm p\gt {1\over2}\)</span>，左偏<span
+class="math inline">\(\rm p\lt {1\over2}\)</span>，对称<span
+class="math inline">\(\rm p={1\over
+2}\)</span>；不难发现左右偏是对称的，所以只需分别研究右偏和对称的情况即可。<br>
+  我们想要研究随机游动的样本轨道，从以下这个基本的问题开始讨论：设<span
+class="math inline">\(\rm a\)</span>是整数，则随机游动<span
+class="math inline">\((\rm X_n)\)</span>是否一定到达<span
+class="math inline">\(\rm a\)</span>？从字面意义上来说，这就是事件<span
+class="math inline">\(\bigcup_{\rm n=1}^{\infty} \{\rm
+X_n=a\}\)</span>，但更重要的是引入如下随机时间： <span
+class="math display">\[\rm T_a:=\inf\{n\geq1:X_n=a\}\]</span>
+这个随机时间称为<span class="math inline">\(\rm
+a\)</span>的首中时，即随机游动第一次到达<span class="math inline">\(\rm
+a\)</span>的时间。<br> <strong>注：</strong> 这里<span
+class="math inline">\(\rm n\geq1\)</span>和<span
+class="math inline">\(\rm n\geq0\)</span>在<span
+class="math inline">\(\rm
+a=0\)</span>时是有区别的，后者所给出的随机时间叫做进入时。另一方面，<span
+class="math inline">\(\rm
+T=T_0\)</span>代表起点的首中时，也因此被称为首次返回时。<br>
+  那让我们在这个随机时间的帮助下重述之前研究的问题，自然地约定<span
+class="math inline">\(\inf \emptyset
+=\infty\)</span>，则随机游动在有限时间内经过<span
+class="math inline">\(\rm a\)</span>这一事件即为<span
+class="math inline">\(\{\rm T_a\lt \infty\}\)</span>
+，其概率自然表示为<span class="math inline">\(\mathbb{P}(\rm T_a\lt
+\infty)\)</span>，当此概率为1时，我们才能考虑其期望与分布。换言之，接下来我们先研究这个概率何时为1。<br>
+  随机游动地严格表述自然地和概率论中地大数定律联系在一起，我们根据<span
+class="math inline">\(\rm X_n\)</span>满足大数定律，所以有： <span
+class="math display">\[{\rm X_n \over \rm n}\rightarrow
+\mathbb{E}[\xi_1]\]</span>
+  这是Bernoulli300年前地结果，Borel在100年前进一步证明了上述收敛在几乎处处意义下也成立，也即几乎所有样本轨道具有此性质。于是在随机游动右偏地情况下，由<span
+class="math inline">\(\mathbb{E}[\xi_1]=\rm p-q\)</span>，<span
+class="math inline">\(\rm X_n\)</span>几乎处处趋于正无穷，进而当<span
+class="math inline">\(\rm a\gt 0\)</span>时，自然有<span
+class="math inline">\(\mathbb{P}(\rm T_a\lt
+\infty)=1\)</span>，另一边，即当<span class="math inline">\(\rm a\leq
+0\)</span>时，也不难证明<span class="math inline">\(\mathbb{P}(\rm
+T_a\lt \infty)\lt 1\)</span><br>
+  接下来我们继续考察对称时的情况，这个时候强大数定律只能得到<span
+class="math inline">\(\rm {X_n\over n}\)</span>趋于0，也即<span
+class="math inline">\(\rm |X_n|\)</span>相比<span
+class="math inline">\(\rm
+n\)</span>很小，但不能得到更细致的结果。从直觉上来看，对称简单随机游动在两边到达的最远位置应该相同，自然猜测会到达所有点，即<span
+class="math inline">\(\forall \rm a \in \mathbb{Z},\mathbb{P}(T_a\lt
+\infty)=1\)</span>。要证明这一点实际上只需证明几乎所有轨道无界即可，即<br>
+<span class="math display">\[\mathbb{P}(\rm \sup_nX_n=\infty)=1\]</span>
+这样结合简单随机游动自身性质证明了我们的猜测。具体证明过程如下：<br>
+  首先该事件属于<span
+class="math inline">\(\{\xi_n\}\)</span>的尾事件域，因为其与前有限个<span
+class="math inline">\(\{\xi_n\}\)</span>无关。于是由Kolmogorov 01
+律，它的概率非0即1.我们只需说明概率非0即可。而根据中心极限定理：<br>
+<span class="math display">\[
+\begin{align*}
+    \rm \mathbb{P}(\sup_n X_n=\infty)&amp;\geq \mathbb{P}(\rm
+\varlimsup_{n}\{X_n\gt \sqrt{n}\})\\
+    &amp;\geq\rm \lim_n \mathbb{P}(X_n\gt\sqrt{n})=1-\Phi(1)\gt0
+\end{align*}
+\]</span> 同理根据随机游动的对称性，进而得到<span
+class="math inline">\(\mathbb{P}(\rm \sup_n X_n=\infty,\inf_n
+X_n=-\infty)=1\)</span>，于是给出了我们猜测的证明。<br></p>
+<h1 id="反射原理">反射原理</h1>
+<p>  我们刚刚给出了对简单随机游动首中时的基本研究，但这一刻画似乎不够深刻，我们接下来从初等排列组合方法研究对称随机游动。事实上，以离散时间为横轴，所处位置为纵轴，我们可以很轻松地将对称简单随机游动的每条轨道以折线形式画出来。<br>
+  我们称一条格点轨道为某个整数列<span class="math inline">\((\rm
+s_m,s_{m+1},s_{m+3},\cdots s_n)\)</span>满足<span
+class="math inline">\(\forall \rm m\lt k \leq n\)</span>，<span
+class="math inline">\(\rm
+s_k-s_{k-1}\)</span>为1或-1。也即我们给出了一个随机游动样本轨道到格点轨道的一一对应，且每条轨道是等概率的。因此，我们只需研究格点轨道上的问题即可。若<span
+class="math inline">\(\rm W_n\)</span>表示从0出发长为<span
+class="math inline">\(\rm n\)</span>的格点轨道全体，<span
+class="math inline">\(\rm B\subset
+W_n\)</span>表示一个轨道性质，则显然有：<br> <span
+class="math display">\[\mathbb{P}(\rm (X_j:0\leq j \leq n)\in
+B)={|B|\over2^n}\]</span>   我们想要研究的是首次返回时<span
+class="math inline">\(\rm
+T\)</span>的分布，即简单随机游动以何种方式返回起点，注意到格点轨道只能在<span
+class="math inline">\(2\rm n\)</span>处与横轴相交，故只需考虑<span
+class="math inline">\(\mathbb{P}(\rm T=2n),\forall
+n\in\mathbb{Z}^+\)</span>即可。这个问题的核心在于与横轴不交，且大于0与小于0对称，故只需给出<span
+class="math inline">\(\mathbb{P}(\rm X_1\gt 0,X_2\gt 0,\cdots,X_{2n}\gt
+0),\forall n\in
+\mathbb{Z}^+\)</span>的表达式，相邻两项乘2后做差即得结果。这一结论依赖于以下反射原理。<br>
+<strong>定理3.2.1（反射原理）</strong> 设<span class="math inline">\(\rm
+a,b\gt 0,m\lt n\)</span>则从格点<span class="math inline">\((\rm
+m,a)\)</span>到<span class="math inline">\((\rm
+n,b)\)</span>的且与横轴相交的格点轨道总数与从<span
+class="math inline">\((\rm m,a)\)</span>到<span
+class="math inline">\((\rm n,-b)\)</span>的格点轨道总数相同。<br>
+<strong>证明</strong>
+直觉上通过翻折可以建立两者间的一一对应，我们将它写得严格一些。对任何从格点<span
+class="math inline">\((\rm m,a)\)</span>到<span
+class="math inline">\((\rm n,b)\)</span>的且与横轴相交的格点轨道<span
+class="math inline">\((\rm s_m,\cdots,s_n
+)\)</span>，设最迟与横轴相遇于<span class="math inline">\(\rm k(m\lt
+k\lt n)\)</span>时刻，将该轨道对应至轨道<span class="math inline">\((\rm
+s_m,\cdots,s_k,-s_{k+1},\cdots,-s_n )\)</span>不难验证这是从<span
+class="math inline">\((\rm m,a)\)</span>到<span
+class="math inline">\((\rm
+n,-b)\)</span>的格点轨道且这个映射是一一映射，于是反射原理自然成立。<br>
+  记<span class="math inline">\(\rm
+u_{2n}=\mathbb{P}(X_{2n}=0)\)</span>，运用反射原理来说明<span
+class="math inline">\(\mathbb{P}(\rm X_1\gt 0,X_2\gt 0,\cdots,X_{2n}\gt
+0)={1 \over2}u_{2n}\)</span>，下面的推导中<span
+class="math inline">\(\rm N_{n,x}\)</span>表示<span
+class="math inline">\((0,0)\)</span>到<span class="math inline">\((\rm
+n,x)\)</span>的格点轨道总数。 <span class="math display">\[
+\begin{align*}
+    \mathbb{P}(\rm X_1\gt 0,X_2\gt 0,\cdots,X_{2n}\gt 0)&amp;=\rm
+\sum^{n}_{k=1}\mathbb{P}(\rm X_1\gt 0,X_2\gt 0,\cdots,X_{2n}=2k) \\
+    &amp;=\rm{1\over2^{2n}}\sum^{n}_{k=1}
+(N_{2n-1,2k-1}-N_{2n-1,2k+1})\\
+    &amp;=\rm{N_{2n-1,1}\over 2^{2n}}=\rm{1\over2}u_{2n}
+\end{align*}
+\]</span> 于是我们有<span class="math inline">\(\mathbb{P}(\rm T=2n)=\rm
+u_{2n-2}-u_{2n},\forall n\in\mathbb{Z}^+\)</span>，进而也有<br> <span
+class="math display">\[\mathbb{P}(\rm T\lt
+\infty)=\lim_{n\to\infty}\sum^n_{k=1} \mathbb{P}(\rm
+T=2k)=\lim_{n\to\infty}1-u_{2n}=1\]</span></p>
+<h1 id="首达概率公式">首达概率公式</h1>
+<p>  在上一节中我们利用对称随机游走在格点轨道上等概率的性质证明了<span
+class="math inline">\(\mathbb{P}(\rm T\lt
+\infty)=1\)</span>，但这一方法不能很平凡地推广到一般情况，我们还是希望能够更一般地解决这一问题。一个自然的想法是通过好算的<span
+class="math inline">\(\rm u_{2n}\)</span>来推导<span
+class="math inline">\(\rm
+f_{2n}\)</span>。具体思路是先通过首达概率公式将<span
+class="math inline">\(\rm
+f_{2n}:=\mathbb{P}(T=2n)\)</span>与之前所说的<span
+class="math inline">\(\rm u_{2n}\)</span>联系起来，进而通过<span
+class="math inline">\(\mathbb{P}(\rm T\lt \infty)=\sum_{\rm
+n=1}^{\infty} f_{2n}\)</span>得到结果。<br>
+  首达概率公式证明的核心来自于一个直觉，可以从某一时刻开始将原随机游动视为起始点不同的新随机游动，也就是说随机序列<span
+class="math inline">\(\rm X_k&#39;=X_{n+k}-X_n\)</span>，<span
+class="math inline">\(k\geq 0\)</span>是一个与<span
+class="math inline">\((\rm X_j :j\leq n)\)</span>独立且与<span
+class="math inline">\((\rm
+X_t)\)</span>分布相同的随机序列。具体的证明细节验证起来并不复杂。<br>
+<strong>注：</strong> 这也就是之后会讲到的马尔可夫性。<br>
+  有了上述性质以后，首达概率公式的证明就并不复杂。我们有<br> <span
+class="math display">\[
+\begin{align*}
+    \rm u_{2n}=\mathbb{P}(\rm X_{2n}=0)&amp;=\rm
+\sum^{n}_{r=1}\mathbb{P}(\rm X_{2n}=0,T=2r)\\
+    &amp;=\rm \sum^{n}_{r=1}\mathbb{P}(\rm X_{2n-2r}&#39;=0,T=2r)\\
+    &amp;=\rm \sum^{n}_{r=1}f_{2r}u_{2n-2r}
+\end{align*}
+\]</span> 这样就有了将<span class="math inline">\(\rm
+u_{2n}\)</span>和<span class="math inline">\(\rm
+f_{2n}\)</span>联系起来的桥梁。理论上从上述方程组可以解出<span
+class="math inline">\(\rm
+f_{2n}\)</span>。但这并不是一件容易的事，我们需要一个更简单的算法。母函数是一个不错的选择。公式两边乘<span
+class="math inline">\(\rm t^{2n}\)</span>再对<span
+class="math inline">\(\rm n\)</span>求和：<br> <span
+class="math display">\[
+\rm \sum_{n\geq 1} u_{2n}t^{2n}=\rm \sum_{n\geq
+1}\sum^{n}_{r=1}f_{2r}t^{2r}\cdot u_{2n-2r}t^{2n-2r}=\rm \sum_{r\geq
+1}f_{2r}t^{2r}\sum_{n\geq r}u_{2n-2r}t^{2n-2r}
+\]</span> 则记<span class="math inline">\(\rm
+F(t),U(t)\)</span>分别为<span class="math inline">\(\rm (u_n)_{n\geq
+0},(f_n)_{n\geq0}\)</span>的母函数，我们进而有<span
+class="math inline">\(\rm F(t)U(t)=U(t)-1\)</span>而Taylor公式给出了<br>
+<span class="math display">\[\rm U(t)=\sum_{n\geq 0}{(2n)!\over
+(n!)^2}(pq)^nt^{2n}=(1-4pqt^2)^{-{1\over 2}}\]</span> 故<span
+class="math inline">\(\rm F(t)=1-\sqrt{1-4pqt^2}\)</span>，于是<br>
+<span class="math display">\[\rm \mathbb{P}(T\lt \infty)=\lim_{t\uparrow
+1}F(t)=1-|p-q| \]</span> 这样即给出了我们希望研究的结果。</p>
+<h1 id="差分方程">差分方程</h1>
+<p>  差分方程是微分方程的离散形式，也是早期研究随机游动的一个重要方法。下面我们以输光问题为例讲述这一方法。<br>
+  输光问题指的是两个赌资为<span class="math inline">\(\rm
+a,b\)</span>的赌徒甲乙进行简单的掷硬币赌博，直到一方输光为止，求甲输光的概率。将其抽象化为数学模型也就是一个简单随机游动的问题：即从<span
+class="math inline">\(\rm
+a\)</span>位置开始做简单随机游动，直到他触碰到<span
+class="math inline">\(\rm 0\)</span>（输光）或<span
+class="math inline">\(\rm a+b\)</span>（赢下所有），也就是求<span
+class="math inline">\(\mathbb{P}(\rm T_0\lt
+T_{a+b})\)</span>注意到若<span class="math inline">\(\rm
+X=(X_n)\)</span>为简单随机游动，则<span class="math inline">\(\rm
+X_n^x=X_n+x\)</span>是从<span class="math inline">\(\rm
+x\)</span>出发的简单随机游动。差分方程的基本思路就是利用从<span
+class="math inline">\(\rm
+x\)</span>开始的随机游动左走一步，右走一步后分别变为<span
+class="math inline">\(\rm x-1\)</span>开始的随机游动和<span
+class="math inline">\(\rm
+x+1\)</span>开始的随机游动，通过边界条件和方程给出结果。在计算当中首中时和进入时无差别，不妨用进入时。<br>
+  <span class="math inline">\(\rm g_x\)</span>代表从<span
+class="math inline">\(\rm x\)</span>开始的简单随机游动下的<span
+class="math inline">\(\mathbb{P}(\rm T_0\lt
+T_{a+b})\)</span>。根据进入时，我们有边界条件<span
+class="math inline">\(\rm g_0=1,g_{a+b}=0\)</span>而当<span
+class="math inline">\(0\lt \rm x\lt
+a+b\)</span>，随机游动再走一步就变成<span class="math inline">\(\rm
+g_{x-1},g_{x+1}\)</span>，根据全概率公式我们给出差分方程：<br> <span
+class="math display">\[\rm g_x=pg_{x+1}+qg_{x-1}\]</span>
+类似地考虑赌博地持续时间<span class="math inline">\(\rm T=T_0\wedge
+T_{a+b}\)</span>，他的期望（记作<span class="math inline">\(\rm
+E_x\)</span>）通过差分方程<span class="math inline">\(\rm
+E_x=pE_{x+1}+qE_{x-1}+1\)</span>及边界条件<span
+class="math inline">\(\rm E_0=E_{a+b}=0\)</span>给出。</p>
+<h1 id="随机游动的马氏性">随机游动的马氏性</h1>
+<p>  前面几节所用的方法都诉诸于简单随机游动本身的性质，也即只能用于简单随机游动，在这节中我们尝试考察简单随机游动中更一般的性质，Markov性及其应用，该性质可以推广至一般随机序列。所谓Markov性，或马氏性是指在已知现在的情况下，将来与过去独立。<br>
+  刚刚的这个叙述略显抽象，让我们回到例子中看，在简单随机游动中，给定<span
+class="math inline">\(\rm X_k=x\)</span>，将来的运动<span
+class="math inline">\(\rm (X_n,n\geq k)\)</span>是一个从<span
+class="math inline">\(\rm x\)</span>出发的简单随机游动，与过去<span
+class="math inline">\(\rm X_0,X_1,\cdots,X_{k-1}\)</span>独立。<br>
+  对<span class="math inline">\(\rm x\in \mathbb{Z}\)</span>，令<span
+class="math inline">\(\rm X_n^x=x+X_n\)</span>，<span
+class="math inline">\(\{\rm X_n^x\}\)</span>称为从<span
+class="math inline">\(\rm
+x\)</span>出发的简单随机游动，即在概率空间<span
+class="math inline">\((\Omega,\mathcal{F},\mathbb{P})\)</span>下，我们有一族随机序列<span
+class="math inline">\(\{(\rm X_n^x:n\geq
+0):x\in\mathbb{Z}\}\)</span>描述不同点开始的相同转移规律的随机游动。在这一思想的基础上，我们将随机游动<span
+class="math inline">\((\rm
+X_n^x)\)</span>映射到轨道空间上，变成轨道空间上依赖于<span
+class="math inline">\(\rm x\)</span>的分布<span
+class="math inline">\(\rm
+\mathbb{P}^x\)</span>，然后只需关注坐标过程即可。也就是说，坐标过程Z在概率测度<span
+class="math inline">\(\rm \mathbb{P}^x\)</span>下相当于从<span
+class="math inline">\(\rm x\)</span>出发的随机游动。<br></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"># 数学</a>
+              <a href="/tags/%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/" rel="tag"># 随机分析</a>
+              <a href="/tags/fdu%E6%95%B0%E5%AD%A6%E8%AF%BE/" rel="tag"># fdu数学课</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/" rel="prev" title="随机过程笔记（一）——预备知识">
+      <i class="fa fa-chevron-left"></i> 随机过程笔记（一）——预备知识
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E9%9E%85%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/" rel="next" title="随机过程笔记（三）——鞅及其应用">
+      随机过程笔记（三）——鞅及其应用 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#bernoulli%E5%BA%8F%E5%88%97%E4%B8%8E%E9%A6%96%E4%B8%AD%E6%97%B6"><span class="nav-number">1.</span> <span class="nav-text">Bernoulli序列与首中时</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%8D%E5%B0%84%E5%8E%9F%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">反射原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A6%96%E8%BE%BE%E6%A6%82%E7%8E%87%E5%85%AC%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">首达概率公式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B7%AE%E5%88%86%E6%96%B9%E7%A8%8B"><span class="nav-number">4.</span> <span class="nav-text">差分方程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E6%B8%B8%E5%8A%A8%E7%9A%84%E9%A9%AC%E6%B0%8F%E6%80%A7"><span class="nav-number">5.</span> <span class="nav-text">随机游动的马氏性</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Gongyi Zhuo</p>
+  <div class="site-description" itemprop="description">似乎属于一个复旦大学的数学系学生，有着一些数学和生活的碎片</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Gongyi Zhuo</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : '17X0NWTRhOKnym2SUUHj1PW0-gzGzoHsz',
+      appKey     : 'w67cFpMyGNoDjRTHgf20MbVT',
+      placeholder: "说点什么吧~",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

@@ -162,7 +162,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://jealnous-cocktail.github.io/2025/05/13/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="https://jealnous-cocktail.github.io/2025/05/13/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0(%E6%80%BB%E9%9B%86&%E7%B4%A2%E5%BC%95)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -176,7 +176,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2025/05/13/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">随机过程笔记</a>
+            <a href="/2025/05/13/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0(%E6%80%BB%E9%9B%86&%E7%B4%A2%E5%BC%95)/" class="post-title-link" itemprop="url">随机过程笔记（总集&索引）</a>
         </h2>
 
         <div class="post-meta">
@@ -193,7 +193,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-05-24 16:09:14" itemprop="dateModified" datetime="2025-05-24T16:09:14+08:00">2025-05-24</time>
+                <time title="修改时间：2025-05-25 14:18:05" itemprop="dateModified" datetime="2025-05-25T14:18:05+08:00">2025-05-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -202,6 +202,10 @@
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">随机分析</span></a>
                 </span>
             </span>
 
@@ -214,8 +218,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2025/05/13/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2025/05/13/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0/" itemprop="commentCount"></span>
+    <a title="valine" href="/2025/05/13/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0(%E6%80%BB%E9%9B%86&%E7%B4%A2%E5%BC%95)/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2025/05/13/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0(%E6%80%BB%E9%9B%86&%E7%B4%A2%E5%BC%95)/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -230,9 +234,480 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>  本笔记为作者复习复旦大学随机课程时整理所得。<br></p>
-<h1 id="预备知识">预备知识</h1>
-<h2 id="单调类方法">单调类方法</h2>
+          <p>&emsp;&emsp;本笔记为作者复习复旦大学随机课程时根据应坚刚老师的讲义整理所得。随机过程课程主要讲述离散时间下的随机过程，包括简单随机过程、鞅和Markov链相关内容，同时也涉及一部分连续时间，如泊松过程和布朗运动，可以说是随机分析的基础。笔记被分为五个章节整理如下。<br></p>
+<a href="/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/" title="随机过程笔记（一）——预备知识">随机过程笔记（一）——预备知识</a><br>
+<a href="/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E7%AE%80%E5%8D%95%E9%9A%8F%E6%9C%BA%E6%B8%B8%E5%8A%A8/" title="随机过程笔记（二）——简单随机游动">随机过程笔记（二）——简单随机游动</a><br>
+<a href="/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E9%9E%85%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/" title="随机过程笔记（三）——鞅及其应用">随机过程笔记（三）——鞅及其应用</a><br>
+<a href="/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89%E2%80%94%E2%80%94%E9%A9%AC%E6%B0%8F%E9%93%BE/" title="随机过程笔记（四）——马氏链">随机过程笔记（四）——马氏链</a><br>
+<a href="/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89%E2%80%94%E2%80%94%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B%E4%B8%8E%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8/" title="随机过程笔记（五）——泊松过程与布朗运动">随机过程笔记（五）——泊松过程与布朗运动</a><br>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://jealnous-cocktail.github.io/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89%E2%80%94%E2%80%94%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B%E4%B8%8E%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Gongyi Zhuo">
+      <meta itemprop="description" content="似乎属于一个复旦大学的数学系学生，有着一些数学和生活的碎片">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="奇怪的地方">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89%E2%80%94%E2%80%94%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B%E4%B8%8E%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8/" class="post-title-link" itemprop="url">随机过程笔记（五）——泊松过程与布朗运动</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-05-25 13:50:34 / 修改时间：14:09:29" itemprop="dateCreated datePublished" datetime="2025-05-25T13:50:34+08:00">2025-05-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">随机分析</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89%E2%80%94%E2%80%94%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B%E4%B8%8E%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89%E2%80%94%E2%80%94%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B%E4%B8%8E%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>  我们之前讨论的问题都处在离散时间的框架下，即随机序列<span
+class="math inline">\((\rm X_t)\)</span>中<span
+class="math inline">\(\rm
+t\)</span>只能取正整数。现在让我们跳出这一框架，讨论更一般的，连续时间的随机过程。具体而言，我们从两个著名的随机过程——泊松过程和布朗运动出发，来一窥连续时间随机过程的不同之处。
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89%E2%80%94%E2%80%94%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B%E4%B8%8E%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://jealnous-cocktail.github.io/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89%E2%80%94%E2%80%94%E9%A9%AC%E6%B0%8F%E9%93%BE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Gongyi Zhuo">
+      <meta itemprop="description" content="似乎属于一个复旦大学的数学系学生，有着一些数学和生活的碎片">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="奇怪的地方">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89%E2%80%94%E2%80%94%E9%A9%AC%E6%B0%8F%E9%93%BE/" class="post-title-link" itemprop="url">随机过程笔记（四）——马氏链</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-05-25 13:49:55 / 修改时间：13:56:29" itemprop="dateCreated datePublished" datetime="2025-05-25T13:49:55+08:00">2025-05-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">随机分析</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89%E2%80%94%E2%80%94%E9%A9%AC%E6%B0%8F%E9%93%BE/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89%E2%80%94%E2%80%94%E9%A9%AC%E6%B0%8F%E9%93%BE/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://jealnous-cocktail.github.io/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E9%9E%85%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Gongyi Zhuo">
+      <meta itemprop="description" content="似乎属于一个复旦大学的数学系学生，有着一些数学和生活的碎片">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="奇怪的地方">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E9%9E%85%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/" class="post-title-link" itemprop="url">随机过程笔记（三）——鞅及其应用</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-05-25 13:49:30 / 修改时间：14:09:28" itemprop="dateCreated datePublished" datetime="2025-05-25T13:49:30+08:00">2025-05-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">随机分析</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E9%9E%85%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E9%9E%85%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="鞅与鞅基本定理">鞅与鞅基本定理</h1>
+<p>  “鞅”是一个陌生的词，简单来说，鞅是研究公平游戏的工具。对随机游动而言我们有<span
+class="math inline">\(\mathbb{E}(\rm
+X_{n+1}|X_n,\cdots,X_1)=\mathbb{E}(\xi_{n+1}|X_n,\cdots,X_1)+X_n=X_n\)</span>换言之，第n+1次游戏在已知前n次游戏的信息后期望为0，我们把这个看作一个公平的游戏，进而给出鞅的基本定义。<br>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E9%9E%85%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://jealnous-cocktail.github.io/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E7%AE%80%E5%8D%95%E9%9A%8F%E6%9C%BA%E6%B8%B8%E5%8A%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Gongyi Zhuo">
+      <meta itemprop="description" content="似乎属于一个复旦大学的数学系学生，有着一些数学和生活的碎片">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="奇怪的地方">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E7%AE%80%E5%8D%95%E9%9A%8F%E6%9C%BA%E6%B8%B8%E5%8A%A8/" class="post-title-link" itemprop="url">随机过程笔记（二）——简单随机游动</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-05-25 13:49:04 / 修改时间：14:09:26" itemprop="dateCreated datePublished" datetime="2025-05-25T13:49:04+08:00">2025-05-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">随机分析</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E7%AE%80%E5%8D%95%E9%9A%8F%E6%9C%BA%E6%B8%B8%E5%8A%A8/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E7%AE%80%E5%8D%95%E9%9A%8F%E6%9C%BA%E6%B8%B8%E5%8A%A8/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="bernoulli序列与首中时">Bernoulli序列与首中时</h1>
+<p>  我们现在来研究简单随机游动，在一条直线上从0开始，每步有<span
+class="math inline">\(\rm{p}\)</span>的概率向右，<span
+class="math inline">\(\rm{q}\)</span>的概率向左，这其实是一直重复Bernoulli实验，即位置变化在每一步分别以<span
+class="math inline">\(\rm{p},q(p+q=1)\)</span>的概率为1,-1,设第n次实验的结果为<span
+class="math inline">\(\xi_n\in\{1,-1\}\)</span>，那么<span
+class="math inline">\(\{\xi_n\}\)</span>是一个独立同分布的随机变量序列，称为Berboulli序列。上述描述看起来显然且直观，但严格的定义需要构造符合要求的概率空间使得其上有Bernoulli序列。事实上，取<span
+class="math inline">\(\xi\)</span>是区间<span
+class="math inline">\([0,1]\)</span>上均匀分布的随机变量，则考虑其无限二进制表示的第n位小数<span
+class="math inline">\(\eta_n\)</span>，取值为0和1，不难验证<span
+class="math inline">\(\eta_n\)</span>构成一个Bernoulli序列。我们进而给出简单随机游动的严格表述，在取值为1，-1的Bernoulli序列<span
+class="math inline">\(\{\eta_n\}\)</span>中，我们设：<br> <span
+class="math display">\[\rm{X}_0=0,X_n=\xi_1+\xi_2+\cdots+\xi_n,n\geq1\]</span>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E7%AE%80%E5%8D%95%E9%9A%8F%E6%9C%BA%E6%B8%B8%E5%8A%A8/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://jealnous-cocktail.github.io/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Gongyi Zhuo">
+      <meta itemprop="description" content="似乎属于一个复旦大学的数学系学生，有着一些数学和生活的碎片">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="奇怪的地方">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/" class="post-title-link" itemprop="url">随机过程笔记（一）——预备知识</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-05-25 13:48:15 / 修改时间：14:08:23" itemprop="dateCreated datePublished" datetime="2025-05-25T13:48:15+08:00">2025-05-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">随机分析</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="单调类方法">单调类方法</h1>
 <p>我们从一个例题开始：<br> 设<span
 class="math inline">\(\xi,\eta\)</span>为两个随机变量，则以下断言等价：<br>
 （1）<span class="math inline">\(\forall x \in \mathbb{R},\mathbb{P}(\xi
@@ -243,7 +718,7 @@ B，<span class="math inline">\(\mathbb{P}(\xi \in
 class="math inline">\(\mathbb{E}\rm{f}(\xi)=\mathbb{E}\rm{f}(\eta)\)</span><br>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2025/05/13/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0/#more" rel="contents">
+              <a class="btn" href="/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -412,20 +887,20 @@ class="math inline">\(\mathbb{E}\rm{f}(\xi)=\mathbb{E}\rm{f}(\eta)\)</span><br>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
