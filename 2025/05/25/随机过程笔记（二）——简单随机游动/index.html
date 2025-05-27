@@ -28,7 +28,7 @@
 <meta property="og:description" content="Bernoulli序列与首中时   我们现在来研究简单随机游动，在一条直线上从0开始，每步有\(\rm{p}\)的概率向右，\(\rm{q}\)的概率向左，这其实是一直重复Bernoulli实验，即位置变化在每一步分别以\(\rm{p},q(p+q&#x3D;1)\)的概率为1,-1,设第n次实验的结果为\(\xi_n\in\{1,-1\}\)，那么\(\{\xi_n\}\)是一个独立同分布的随机变量序列">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-05-25T05:49:04.000Z">
-<meta property="article:modified_time" content="2025-05-25T14:27:20.733Z">
+<meta property="article:modified_time" content="2025-05-27T15:17:56.744Z">
 <meta property="article:author" content="Gongyi Zhuo">
 <meta property="article:tag" content="数学">
 <meta property="article:tag" content="随机分析">
@@ -190,10 +190,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2025-05-25 13:49:04 / 修改时间：22:27:20" itemprop="dateCreated datePublished" datetime="2025-05-25T13:49:04+08:00">2025-05-25</time>
+              <time title="创建时间：2025-05-25 13:49:04" itemprop="dateCreated datePublished" datetime="2025-05-25T13:49:04+08:00">2025-05-25</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-05-27 23:17:56" itemprop="dateModified" datetime="2025-05-27T23:17:56+08:00">2025-05-27</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -511,7 +517,107 @@ class="math inline">\(\sigma\)</span>-代数，我们得到<br>
 <strong>推论2.5.2</strong> <span class="math inline">\(\rm\forall
 n\geq0,x,y\in\mathbb{Z}\)</span>我们有<br> <span
 class="math display">\[\rm
-\mathbb{P}^x(X_{n+1}=y|\mathcal{F}_n)=p(X_n,y)=\mathbb{P}^{X_n}(X_1=y)\]</span></p>
+\mathbb{P}^x(X_{n+1}=y|\mathcal{F}_n)=p(X_n,y)=\mathbb{P}^{X_n}(X_1=y)\]</span>
+我们接下来引入推移算子的语言。<span class="math inline">\(\forall \rm
+k\geq
+0,\omega\in\Omega,(\omega(k+n),n\geq0)\)</span>也是一个轨道，记作<span
+class="math inline">\(\rm \theta_k\omega\)</span>它满足<span
+class="math inline">\(\rm
+X_n\circ\theta_k=X_{k+n},n\geq0\)</span>也就是说退役<span
+class="math inline">\(\rm \theta_k\)</span>相当于“从<span
+class="math inline">\(\rm
+k\)</span>时刻开始看”，于是我们之前的表示可写作<br> <span
+class="math display">\[\rm
+\mathbb{P}^{X_n}(X_1=y)=\mathbb{E}^x(1_{\{X_1=y\}}\circ
+\theta_n|\mathcal{F}_n)\]</span> 更一般地可将原命题推广至以下定理：<br>
+<strong>定理2.5.3</strong> <span class="math inline">\(\rm\forall
+n\geq0,x\in\mathbb{Z},\mathcal{F}\)</span>可测的有界（或非负）随机变量<span
+class="math inline">\(\rm Y\)</span>，有<br> <span
+class="math display">\[\rm \mathbb{E}^x(Y\circ
+\theta_n|\mathcal{F}_n)=\mathbb{E}^{X_n}(Y)\]</span>
+<strong>证明</strong> 由于<span class="math inline">\(\rm
+\mathbb{E}^{X_n}(Y)\)</span>是<span class="math inline">\(\rm
+\mathcal{F}_n\)</span>可测的随机变量，故只需验证对任何原子<span
+class="math inline">\(\rm \mathcal{A}\in\mathcal{F}_n\)</span>有<br>
+<span class="math display">\[\rm \mathbb{E}^x(Y\circ
+\theta_n;\mathcal{A})=\mathbb{E}(\mathbb{E}^{X_n}(Y);\mathcal{A})\]</span>
+由单调类方法，只需证明其对于示性函数<span class="math inline">\(\rm
+Y=1_B\)</span>成立即可，其中<span class="math inline">\(\rm
+B=\{X_0=x_0,\cdots,X_m=x_m\}\)</span>于是根据定理2.5.1，我们自然得到这一命题。</p>
+<h1 id="停时与强马氏性">停时与强马氏性</h1>
+<p>  我们引入在生活中更常见的随机时间，强马氏性是指上述的性质对随机时间也是正确的，但这种表述离严格还很远，我们下面尝试严格给出强马氏性的定义。直观上来说一个合法的随机时间应该被“过去”所决定，因此我们有<br>
+<strong>定义</strong> 取值在<span class="math inline">\(\rm
+\mathbb{Z}_+\cup\{+\infty\}\)</span>上的（广义）随机变量被称为停时，如果<span
+class="math inline">\(\rm \forall n\geq 0,\{T\leq
+n\}\in\mathcal{F}_n\)</span>；以及<span
+class="math inline">\(\rm\mathcal{F}_T:=\{B\in\mathcal{F}:B\cap \{T\leq
+n\}\in\mathcal{F}_n\}\)</span><br> 不难证明<span
+class="math inline">\(\rm\mathcal{F}_T\)</span>为事件域以及关于停时的一系列简单性质。<br>
+  在事件<span class="math inline">\(\rm \{T=n\}\)</span>上定义<span
+class="math inline">\(\rm X_T:=X_n\)</span>，代表随机游动在<span
+class="math inline">\(\rm
+T\)</span>时刻的位置。我们说样本空间上的函数<span
+class="math inline">\(\rm X\)</span>在事件<span
+class="math inline">\(\mathcal{A}\)</span>上是<span
+class="math inline">\(\mathcal{F}\)</span>随机变量，是指<span
+class="math inline">\(\rm \forall x\in\mathbb{R},\{X\leq x\}\cap
+\mathcal{A}\in\mathcal{F}\)</span>；我们进一步研究<span
+class="math inline">\(\rm X_T\)</span>与事件域<span
+class="math inline">\(\rm \mathcal{F}_T\)</span>的关系<br>
+<strong>引理2.6.1</strong> 设<span class="math inline">\(\rm
+T\)</span>是停时，则<span class="math inline">\(\rm X_T\)</span>在<span
+class="math inline">\(\{\rm T\lt \infty\}\)</span>上关于<span
+class="math inline">\(\rm\mathcal{F}_T\)</span>可测。<br>
+<strong>证明</strong> 直接带入定义验证即可。<br>
+  接下来考虑停时的推移，在<span class="math inline">\(\rm
+T=n\)</span>时定义<span class="math inline">\(\rm
+\theta_T=\theta_n\)</span>，是<span
+class="math inline">\((\Omega,\mathcal{F})\)</span>到自身的随机映射。本节下面用<span
+class="math inline">\(\rm T_y,\tau_y\)</span>表示<span
+class="math inline">\(\rm
+y\)</span>的首中时和进入时。接下来是一个常用的结果。<br>
+<strong>引理2.6.3</strong> <span class="math inline">\(\rm\forall
+n,\tau_y\circ\theta_n+n=\inf\{k\geq
+n:X_k\circ\theta_n=y\}\)</span>；于是在事件<span
+class="math inline">\(\rm \{\tau_y\geq n\}\)</span>上有<span
+class="math inline">\(\rm\tau_y=\tau_y\circ\theta_n+n\)</span>；首中时类似，只需将<span
+class="math inline">\(\geq\)</span>修改为<span
+class="math inline">\(\gt\)</span><br> <strong>证明</strong>
+按照定义有<br> <span class="math display">\[
+\begin{align*}
+    \rm \tau_y\circ\theta_n&amp;=\rm \inf\{k\geq0:X_k\circ\theta_n=y\}\\
+    &amp;=\rm\inf\{k\geq0:X_{k+n}=y\}\\
+    &amp;=\rm\inf\{k\geq n:X_{k+n}=y\}-n
+\end{align*}
+\]</span> 即证。<br>
+  在建立了之前的一系列结果后，我们终于可以严格地给出强马氏性的证明了。<br>
+<strong>定理2.6.4</strong> <span class="math inline">\(\rm\forall
+n\geq0,x\in\mathbb{Z}\)</span>，非负随机变量<span
+class="math inline">\(\rm Y\)</span>，在事件<span
+class="math inline">\(\rm\{T\lt \infty\}\)</span>上时有<br> <span
+class="math display">\[\rm \mathbb{E}^x(Y\circ
+\theta_T|\mathcal{F}_T)=\mathbb{E}^{X_T}(Y)\]</span> 即<span
+class="math inline">\(\forall \mathcal{A}\in\mathcal{F}_T\)</span>有<br>
+<span class="math display">\[\rm \mathbb{E}^x(Y\circ
+\theta_T;\mathcal{A},T\lt\infty)=\mathbb{E}(\mathbb{E}^{X_T}(Y);\mathcal{A},T\lt\infty)\]</span>
+<strong>证明</strong>
+类似之前的证明，只需对示性函数验证即可。而由于<span
+class="math inline">\(\rm\mathcal{A}\cap\{T=n\}\in\mathcal{F}_n\)</span>以及前面的结论，我们有<br>
+<span class="math display">\[
+\begin{align*}
+    \rm \mathbb{E}^x(Y\circ
+\theta_T;\mathcal{A},T\lt\infty)&amp;=\rm\sum_{n\geq
+0}\mathbb{E}^x(1_B\circ \theta_T;\mathcal{A}\cap \{T=n\})\\
+    &amp;=\rm\sum_{n\geq 0}\mathbb{E}^x(1_B\circ
+\theta_n;\mathcal{A}\cap \{T=n\})\\
+    &amp;=\rm\sum_{n\geq
+0}\mathbb{E}^x(\mathbb{P}^{X_n}(B);\mathcal{A}\cap \{T=n\})\\
+    &amp;=\rm\sum_{n\geq
+0}\mathbb{E}^x(\mathbb{P}^{X_T}(B);\mathcal{A}\cap \{T=n\})\\
+    &amp;=\rm\mathbb{E}(\mathbb{E}^{X_T}(Y);\mathcal{A},T\lt\infty)
+\end{align*}
+\]</span> 这样就完成了强马氏性的建立。<br></p>
+<h1 id="马氏性的应用">马氏性的应用</h1>
 
     </div>
 
@@ -598,7 +704,7 @@ class="math display">\[\rm
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#bernoulli%E5%BA%8F%E5%88%97%E4%B8%8E%E9%A6%96%E4%B8%AD%E6%97%B6"><span class="nav-number">1.</span> <span class="nav-text">Bernoulli序列与首中时</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%8D%E5%B0%84%E5%8E%9F%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">反射原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A6%96%E8%BE%BE%E6%A6%82%E7%8E%87%E5%85%AC%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">首达概率公式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B7%AE%E5%88%86%E6%96%B9%E7%A8%8B"><span class="nav-number">4.</span> <span class="nav-text">差分方程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E6%B8%B8%E5%8A%A8%E7%9A%84%E9%A9%AC%E6%B0%8F%E6%80%A7"><span class="nav-number">5.</span> <span class="nav-text">随机游动的马氏性</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#bernoulli%E5%BA%8F%E5%88%97%E4%B8%8E%E9%A6%96%E4%B8%AD%E6%97%B6"><span class="nav-number">1.</span> <span class="nav-text">Bernoulli序列与首中时</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%8D%E5%B0%84%E5%8E%9F%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">反射原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A6%96%E8%BE%BE%E6%A6%82%E7%8E%87%E5%85%AC%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">首达概率公式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B7%AE%E5%88%86%E6%96%B9%E7%A8%8B"><span class="nav-number">4.</span> <span class="nav-text">差分方程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E6%B8%B8%E5%8A%A8%E7%9A%84%E9%A9%AC%E6%B0%8F%E6%80%A7"><span class="nav-number">5.</span> <span class="nav-text">随机游动的马氏性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%81%9C%E6%97%B6%E4%B8%8E%E5%BC%BA%E9%A9%AC%E6%B0%8F%E6%80%A7"><span class="nav-number">6.</span> <span class="nav-text">停时与强马氏性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A9%AC%E6%B0%8F%E6%80%A7%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">7.</span> <span class="nav-text">马氏性的应用</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
