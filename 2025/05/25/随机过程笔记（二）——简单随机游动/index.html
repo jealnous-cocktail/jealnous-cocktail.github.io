@@ -28,7 +28,7 @@
 <meta property="og:description" content="Bernoulli序列与首中时   我们现在来研究简单随机游动，在一条直线上从0开始，每步有\(\rm{p}\)的概率向右，\(\rm{q}\)的概率向左，这其实是一直重复Bernoulli实验，即位置变化在每一步分别以\(\rm{p},q(p+q&#x3D;1)\)的概率为1,-1,设第n次实验的结果为\(\xi_n\in\{1,-1\}\)，那么\(\{\xi_n\}\)是一个独立同分布的随机变量序列">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-05-25T05:49:04.000Z">
-<meta property="article:modified_time" content="2025-05-27T15:17:56.744Z">
+<meta property="article:modified_time" content="2025-05-28T04:42:54.414Z">
 <meta property="article:author" content="Gongyi Zhuo">
 <meta property="article:tag" content="数学">
 <meta property="article:tag" content="随机分析">
@@ -198,7 +198,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-05-27 23:17:56" itemprop="dateModified" datetime="2025-05-27T23:17:56+08:00">2025-05-27</time>
+                <time title="修改时间：2025-05-28 12:42:54" itemprop="dateModified" datetime="2025-05-28T12:42:54+08:00">2025-05-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -618,6 +618,31 @@ class="math inline">\(\rm\mathcal{A}\cap\{T=n\}\in\mathcal{F}_n\)</span>以及�
 \end{align*}
 \]</span> 这样就完成了强马氏性的建立。<br></p>
 <h1 id="马氏性的应用">马氏性的应用</h1>
+<p>  我们应用新的符号体系来证明首达概率公式：<br> <span
+class="math display">\[
+\begin{align*}
+    \rm u_{2n}&amp;=\rm
+\mathbb{P}^0(X_{2n}=0)=\sum^n_{r=1}\mathbb{P}^0(X_{2n}=0,T=2r)\\
+    &amp;=\rm\sum^n_{r=1}\mathbb{P}^0(X_{2n-2r}\circ\theta_{2r},T=2r)\\
+    &amp;=\rm\sum^n_{r=1}\mathbb{E}^0(\mathbb{P}^{X_{2r}}(X_{2n-2r}=0),T=2r)=\sum_{r=1}^nf_{2r}u_{2n-2r}
+\end{align*}
+\]</span>
+  在马氏性以外，简单随机游动还有一个重要的性质，即空间平移不变性，或空间齐性：从<span
+class="math inline">\(\rm x\)</span>出发落在集合<span
+class="math inline">\(\rm B\)</span>内的概率和从<span
+class="math inline">\(\rm x+y\)</span>出发落入<span
+class="math inline">\(\rm
+B+y\)</span>的概率相同。我们来应用随机游动的强马氏性来计算首中时的母函数。我们从进入时开始，<span
+class="math inline">\(\rm\forall
+x,y\in\mathbb{Z},\phi_{x,y}\)</span>为<span class="math inline">\(\rm
+\tau_y\)</span>在概率<span class="math inline">\(\rm
+\mathbb{P}^x\)</span>下的母函数<span class="math inline">\(\rm
+\phi_{x,y}(t):=\mathbb{E}^xt^{\tau_y}\)</span><br>   <span
+class="math inline">\(\rm x\not =y\)</span>时，我们有<span
+class="math inline">\(\rm\mathbb{P}^x(T_y=\tau_y)=1\)</span>；于是由空间平移不变性：<br>
+<span class="math display">\[\rm
+\phi_{x,y}(t)=\mathbb{E}^xt^{\tau_y}=\mathbb{E}^0t^{\tau_{y-x}}=\phi_{0,y-x}(t)\]</span>
+<span class="math display">\[\rm \phi_{x,x}(t)=1\]</span></p>
 
     </div>
 
@@ -718,20 +743,20 @@ class="math inline">\(\rm\mathcal{A}\cap\{T=n\}\in\mathcal{F}_n\)</span>以及�
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
