@@ -28,7 +28,7 @@
 <meta property="og:description" content="鞅与鞅基本定理   “鞅”是一个陌生的词，简单来说，鞅是研究公平游戏的工具。对随机游动而言我们有\(\mathbb{E}(\rm X_{n+1}|X_n,\cdots,X_1)&#x3D;\mathbb{E}(\xi_{n+1}|X_n,\cdots,X_1)+X_n&#x3D;X_n\)换言之，第n+1次游戏在已知前n次游戏的信息后期望为0，我们把这个看作一个公平的游戏，进而给出鞅的基本定义。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-05-25T05:49:30.000Z">
-<meta property="article:modified_time" content="2025-05-28T13:55:17.779Z">
+<meta property="article:modified_time" content="2025-05-30T10:04:13.295Z">
 <meta property="article:author" content="Gongyi Zhuo">
 <meta property="article:tag" content="数学">
 <meta property="article:tag" content="随机分析">
@@ -198,7 +198,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-05-28 21:55:17" itemprop="dateModified" datetime="2025-05-28T21:55:17+08:00">2025-05-28</time>
+                <time title="修改时间：2025-05-30 18:04:13" itemprop="dateModified" datetime="2025-05-30T18:04:13+08:00">2025-05-30</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -477,7 +477,81 @@ class="math inline">\(\mathbb{P}\)</span>且使得折现后的股票价格<span
 class="math inline">\(\{\rm\overline{S}_k\}\)</span>在<span
 class="math inline">\(\overline{\mathbb{P}}\)</span>下是一个鞅，那么<span
 class="math inline">\(\overline{\mathbb{P}}\)</span>称为等价鞅测度。<br>
-<strong>定理3.4.2</strong>如果等价鞅测度存在，那么市场有效。<br>
+<strong>定理3.4.2</strong> 如果等价鞅测度存在，那么市场有效。<br>
+<strong>证明</strong> 如果折现后的股票价格在<span
+class="math inline">\(\overline{\mathbb{P}}\)</span>下为鞅，根据之前对于财富过程的讨论，折现后财富过程也是鞅，于是鞅基本定理给出<span
+class="math inline">\(\rm
+\overline{\mathbb{E}}X_n=(1+r)^n\overline{\mathbb{E}}X_0\)</span>若初始投资<span
+class="math inline">\(\rm X_0=0\)</span>则<span
+class="math inline">\(\rm \overline{\mathbb{E}}X_0=0\)</span>于是<span
+class="math inline">\(\rm X_n\geq 0\)</span>可推出<span
+class="math inline">\(\overline{\mathbb{P}}(\rm
+X_n\gt0)=0\)</span>结合两个测度的等价性即得市场无套利。<br>
+  上述定理给出了市场有效的充分条件，事实上，这个条件也是必要的，但证明过于复杂，在这里我们仅在一类特殊的市场下考虑这个问题。具体来说，如果股票价格每次变化都是乘上一个独立同分布的服从Bernoulli的随机变量，也就是<span
+class="math inline">\(\rm
+S_k=S_0\cdot\xi_1\cdots\xi_k,k=1,\cdots,n\)</span>且<span
+class="math inline">\(\rm\forall
+k,\mathbb{P}(\xi_k=u)=p,\mathbb{P}(\xi_k=d)=q=1-p\)</span>其中<span
+class="math inline">\(\rm u,d\)</span>为常数且有<span
+class="math inline">\(\rm 0\lt d\lt 1\lt
+u\)</span>，直观来说就是股票在<span class="math inline">\(\rm
+k+1\)</span>时刻分别以概率<span class="math inline">\(\rm
+p,q\)</span>变为<span class="math inline">\(\rm
+k\)</span>时刻价格的<span class="math inline">\(\rm u\)</span>倍和<span
+class="math inline">\(\rm
+d\)</span>倍。满足这个条件的市场被称作二项股票市场。一个二项股票市场其实只与<span
+class="math inline">\(\xi_k\)</span>的分布及初始值和利率有关，即一个二项市场可以记为<span
+class="math inline">\(\rm
+M(r,u,d,p,S_0)\)</span>；我们来研究二项市场的有效性，不难得到下面这个定理<br>
+<strong>定理3.4.3</strong> 二项市场有效当且仅当<span
+class="math inline">\(\rm d\lt 1+r\lt u\)</span><br>
+<strong>证明</strong> 必要性的证明只需在<span class="math inline">\(\rm
+d\geq 1+r\)</span>与<span class="math inline">\(\rm u\leq
+1+r\)</span>时分别给出套利策略即可。具体来说，当<span
+class="math inline">\(\rm d\geq
+1+r\)</span>时，向银行贷款买股票是一定不会亏且有收益的概率为正，这样就是一个套利策略。同理可以给出<span
+class="math inline">\(\rm u\leq
+1+r\)</span>时的套利策略。这样即给出必要性的证明。<br>
+  充分性方面，我们根据定理3.4.2只需证明这个市场有等价鞅测度即可。即我们希望<span
+class="math inline">\(\overline{\mathbb{P}}\)</span>下的<span
+class="math inline">\(\rm \xi_1,\cdots,\xi_n\)</span>独立同分布且<span
+class="math inline">\(\rm\mathbb{P}(\xi_k=u)=\overline{p},\mathbb{P}(\xi_k=d)=\overline{q}=1-\overline{p}\)</span>于是等价保证了，只需取适当的<span
+class="math inline">\(\rm\overline{p}\)</span>使<span
+class="math inline">\(\rm (S_k)\)</span>为鞅即可。也即<br> <span
+class="math display">\[\rm
+(1+r)^{-k}S_k=\overline{\mathbb{E}}((1+r)^{-k-1}S_{k+1}|\mathcal{F}_k)=(1+r)^{-k}S_k\overline{\mathbb{E}}({1\over
+1+r}\xi_{k+1})\]</span> 于是自然有<span
+class="math inline">\(\rm\overline{p}={1+r-d\over
+u-d}\)</span>时为等价鞅测度，充分性得证。<br>
+  以上的投资策略都是在金融市场中最基础的投资，在几百年的发展后，金融市场衍生出了大量不同的金融产品，统称为衍生证券或者金融产品。我们下面介绍期权这一基本的衍生产品。期权本身也包括很多种，我们以欧式买入期权为例。所谓欧式买入期权是指在商定的时刻可以以商定的价格来购买股票的
+一份合约，是一种权利而非义务。于是一个在商定时刻<span
+class="math inline">\(\rm n\)</span>以商定价格<span
+class="math inline">\(\rm K\)</span>购买股票的欧式期权在<span
+class="math inline">\(\rm n\)</span>时刻价值为<br> <span
+class="math display">\[\rm V_n:=(S_n-K)^+\]</span>
+很好理解，就是如果股票价格高于商定价格，就以商定价格买入，于是获利<span
+class="math inline">\(\rm S_n-K\)</span>，否则就没有收益。<span
+class="math inline">\(\rm V_n\)</span>为<span class="math inline">\(\rm
+S_n\)</span>函数，是<span class="math inline">\(\rm
+\mathcal{F}_n\)</span>可测的随机变量。<br>
+  接下来我们关注一份期权应该被卖出多少钱，也就是期权的合理价格。一个随机商品的通常价格是它的期望，这由大数定律保证。但这个价格是存在风险的，比如保险公司的赔付。但由于期权本身基于股票价值，所以它可以有一个无风险的价格。本质上来说，在市场足够丰富的情况下，期权作为投资可以通过之前讨论的一般投资方式复制。而期权出现的目的则是作为一种杠杆，即用相同的钱可以买更多的期权，但在亏损时期权会一文不值，而投资股票至少还持有股票。我们把这些基本的观察在数学上确定下来<br>
+<strong>定义</strong> 一个在<span class="math inline">\(\rm
+n\)</span>时刻到期的衍生证券是指一个<span class="math inline">\(\rm
+\mathcal{F}_n\)</span>可测的随机变量，也即它的价值到时刻<span
+class="math inline">\(\rm
+n\)</span>才完全确定。非负的衍生证券也称为未定权益，简称权益。期权是权益的一种。一个在时刻<span
+class="math inline">\(\rm n\)</span>到期的权益<span
+class="math inline">\(\rm
+V_n\)</span>称为可对冲（或复制）的，是说存在资金<span
+class="math inline">\(\rm X_0\)</span>与一个投资策略<span
+class="math inline">\(\Delta\)</span>使其自融资下的财富过程<span
+class="math inline">\(\rm X\)</span>满足<span class="math inline">\(\rm
+X_n=V_n\)</span>，这时<span class="math inline">\(\rm
+X_0\)</span>称为<span class="math inline">\(\rm
+V_n\)</span>的风险中性定价。一个市场完备是指任何权益可对冲。<br>
+  市场的有效性是对任何投资而言的，因此如果市场有效，那么权益在市场上的定价应该时唯一的，否则自然可以通过买卖获得套利，这个价格就是权益的风险中性定价。<br>
+<strong>定理3.4.4</strong> 如果市场有效且完备，那么权益<span
+class="math inline">\(\rm V_n\)</span>的价格必须是其风险中性定价。<br>
 <strong>证明</strong></p>
 
     </div>

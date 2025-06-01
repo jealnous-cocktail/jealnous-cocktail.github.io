@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"jealnous-cocktail.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="马氏链与转移函数&emsp;&emsp;我们已经在第二章的最后看到了马氏性的定义，即$\rm \mathbb{P}^x(X_{n+1}&#x3D;y|X_i&#x3D;x_i,0\leq i\leq n)&#x3D;\mathbb{P}(X_{n+1}&#x3D;y|X_n&#x3D;x_n)$，也就是只依赖于现在的位置。另一方面，概率$\rm\mathbb{P}(X_{n+1}&#x3D;y|X">
+  <meta name="description" content="马氏链与转移函数   我们已经在第二章的最后看到了马氏性的定义，即\(\rm \mathbb{P}^x(X_{n+1}&#x3D;y|X_i&#x3D;x_i,0\leq i\leq n)&#x3D;\mathbb{P}(X_{n+1}&#x3D;y|X_n&#x3D;x_n)\)，也就是只依赖于现在的位置。另一方面，概率\(\rm\mathbb{P}(X_{n+1}&#x3D;y|X_n&#x3D;x_n)\)也可能与时间\(\rm n\)有关，而如果事实上这">
 <meta property="og:type" content="article">
 <meta property="og:title" content="随机过程笔记（四）——马氏链">
 <meta property="og:url" content="https://jealnous-cocktail.github.io/2025/05/25/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89%E2%80%94%E2%80%94%E9%A9%AC%E6%B0%8F%E9%93%BE/index.html">
 <meta property="og:site_name" content="奇怪的地方">
-<meta property="og:description" content="马氏链与转移函数&emsp;&emsp;我们已经在第二章的最后看到了马氏性的定义，即$\rm \mathbb{P}^x(X_{n+1}&#x3D;y|X_i&#x3D;x_i,0\leq i\leq n)&#x3D;\mathbb{P}(X_{n+1}&#x3D;y|X_n&#x3D;x_n)$，也就是只依赖于现在的位置。另一方面，概率$\rm\mathbb{P}(X_{n+1}&#x3D;y|X">
+<meta property="og:description" content="马氏链与转移函数   我们已经在第二章的最后看到了马氏性的定义，即\(\rm \mathbb{P}^x(X_{n+1}&#x3D;y|X_i&#x3D;x_i,0\leq i\leq n)&#x3D;\mathbb{P}(X_{n+1}&#x3D;y|X_n&#x3D;x_n)\)，也就是只依赖于现在的位置。另一方面，概率\(\rm\mathbb{P}(X_{n+1}&#x3D;y|X_n&#x3D;x_n)\)也可能与时间\(\rm n\)有关，而如果事实上这">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-05-25T05:49:55.000Z">
-<meta property="article:modified_time" content="2025-05-28T06:14:38.844Z">
+<meta property="article:modified_time" content="2025-06-01T12:52:57.580Z">
 <meta property="article:author" content="Gongyi Zhuo">
 <meta property="article:tag" content="数学">
 <meta property="article:tag" content="随机分析">
@@ -198,7 +198,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-05-28 14:14:38" itemprop="dateModified" datetime="2025-05-28T14:14:38+08:00">2025-05-28</time>
+                <time title="修改时间：2025-06-01 20:52:57" itemprop="dateModified" datetime="2025-06-01T20:52:57+08:00">2025-06-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -239,9 +239,274 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="马氏链与转移函数"><a href="#马氏链与转移函数" class="headerlink" title="马氏链与转移函数"></a>马氏链与转移函数</h1><p>&emsp;&emsp;我们已经在第二章的最后看到了马氏性的定义，即$\rm \mathbb{P}^x(X_{n+1}&#x3D;y|X_i&#x3D;x_i,0\leq i\leq n)&#x3D;\mathbb{P}(X_{n+1}&#x3D;y|X_n&#x3D;x_n)$，也就是只依赖于现在的位置。另一方面，概率$\rm\mathbb{P}(X_{n+1}&#x3D;y|X_n&#x3D;x_n)$也可能与时间$\rm n$有关，而如果事实上这个概率与$\rm n$无关，我们就说这个随机序列具有时间齐性。<br></p>
-<span id="more"></span>
-<p><strong>定义</strong> 一个满足时间齐性和马氏性的随机序列称为马氏链。<br><br>&emsp;&emsp;容易看到马氏链的性质其实只跟转移机制有关。$\forall \rm x,y\in E$令<br><br>$$\rm p_{x,y}&#x3D;p(x,y):&#x3D;\mathbb{P}(X_{n+1}&#x3D;y|X_n&#x3D;x)$$<br>由于时间齐性，这是良定的，直观地叫做从$\rm x$转移到$\rm y$地概率。这样给出地$\rm p$是$\rm E\times E$上的函数，满足<br><br>（1）$\rm p(x,y)\geq 0$<br><br>（2）$\rm \sum_{y\in E}p(x,y)&#x3D;1$<br><br>这样的一个函数$\rm p$称为$\rm E$上的转移函数或者转移概率，它也可以看作一个转移矩阵，作为矩阵是它的每一行元素和为1。由乘法公式，马氏链的有限维分布写作<br><br>$$$$</p>
+        <h1 id="马氏链与转移函数">马氏链与转移函数</h1>
+<p>  我们已经在第二章的最后看到了马氏性的定义，即<span
+class="math inline">\(\rm \mathbb{P}^x(X_{n+1}=y|X_i=x_i,0\leq i\leq
+n)=\mathbb{P}(X_{n+1}=y|X_n=x_n)\)</span>，也就是只依赖于现在的位置。另一方面，概率<span
+class="math inline">\(\rm\mathbb{P}(X_{n+1}=y|X_n=x_n)\)</span>也可能与时间<span
+class="math inline">\(\rm n\)</span>有关，而如果事实上这个概率与<span
+class="math inline">\(\rm
+n\)</span>无关，我们就说这个随机序列具有时间齐性。<br> <span id="more"></span>
+<strong>定义</strong> 一个满足时间齐性和马氏性的随机序列称为马氏链。<br>
+  容易看到马氏链的性质其实只跟转移机制有关。<span
+class="math inline">\(\forall \rm x,y\in E\)</span>令<br> <span
+class="math display">\[\rm
+p_{x,y}=p(x,y):=\mathbb{P}(X_{n+1}=y|X_n=x)\]</span>
+由于时间齐性，这是良定的，直观地叫做从<span class="math inline">\(\rm
+x\)</span>转移到<span class="math inline">\(\rm
+y\)</span>地概率。这样给出地<span class="math inline">\(\rm
+p\)</span>是<span class="math inline">\(\rm E\times
+E\)</span>上的函数，满足<br> （1）<span class="math inline">\(\rm
+p(x,y)\geq 0\)</span><br> （2）<span class="math inline">\(\rm
+\sum_{y\in E}p(x,y)=1\)</span><br> 这样的一个函数<span
+class="math inline">\(\rm p\)</span>称为<span class="math inline">\(\rm
+E\)</span>上的转移函数或者转移概率，它也可以看作一个转移矩阵，作为矩阵是它的每一行元素和为1。由乘法公式，马氏链的有限维分布写作<br>
+<span class="math display">\[\rm \mathbb{P}(X_i=x_i,0\leq i\leq
+n)=\mu_{x_0}p(x_0,x_1)\cdots p(x_{n-1},x_n)\]</span> 其中<span
+class="math inline">\(\rm \mu_{x_0}=\mathbb{P}(X_0=x_0)\)</span><br>
+  这也就是说，有限维分布由转移概率和初始分布完全决定。我们希望和简单随机游动一样有一族概率<span
+class="math inline">\(\rm \mathbb{P}^x\)</span>使得<span
+class="math inline">\(\rm X\)</span>在它之下是<span
+class="math inline">\(\rm
+x\)</span>出发的具有相同转移机制的马氏链。如果有<span
+class="math inline">\(\rm \mathbb{P}(X_0=x)\gt 0\)</span>，取概率为<span
+class="math inline">\(\rm
+\mathbb{P}^x(\mathcal{A})=\mathbb{P}(\mathcal{A}|X_0=x),\mathcal{A}\in\mathcal{F}\)</span>，这个概率满足我们的要求。但当<span
+class="math inline">\(\rm \mathbb{P}(X_0=x)=
+0\)</span>时，这种方法就失效了。进一步地，如果我们抛去概率空间和马氏链，是否能从任一转移函数反向构造满足我们要求的马氏链呢？这是Kolmogorov相容性定理的内容，限于篇幅不过多展开。我们在下面的讨论中默认这一事实，即<br>
+<strong>定理4.1.1</strong> 给定<span class="math inline">\(\rm
+E\)</span>上一个转移函数<span class="math inline">\(\rm (p(x,y):x,y\in
+E)\)</span>，存在一个可测空间<span
+class="math inline">\((\Omega,\mathcal{F})\)</span>，随机序列<span
+class="math inline">\(\rm X=\{X_n:n\geq 0\}\)</span>与一族概率<span
+class="math inline">\(\rm (\mathbb{P}^x),x\in E\)</span>满足：<br> <span
+class="math display">\[\rm \mathbb{P}(X_i=x_i,0\leq i\leq
+n)=1_{\{X_0=x\}}p(x_0,x_1)\cdots p(x_{n-1},x_n)\]</span>
+我们称上面定理中的随机序列和概率族是该转移函数对应的马氏链。<br>
+  马氏链的存在非常直观，就是在一个空间<span class="math inline">\(\rm
+E\)</span>上一只青蛙以某种规律跳动。结合第二章中的内容，我们不妨样本空间为轨道空间，于是在这种情况下，状态空间为<span
+class="math inline">\(\rm
+E\)</span>的一个随机序列就是该样本空间上的一个概率测度。<br>
+  另外我们刚刚看到的马氏链的两个定义是相通的，而后一个比前一个更一般。具体来说，抽取第一个定义中的初始分布<span
+class="math inline">\((\rm\mu_x)\)</span>与转移机制<span
+class="math inline">\(\rm
+p\)</span>，得到后一个定义中的新马氏链，然后令<br> <span
+class="math display">\[\mathbb{P}^\mu:=\rm \sum_{x\in
+E}\mu_x\mathbb{P}^x\]</span> 则新构造的马氏链与原先的同分布。<br>
+  同样参考前面第二章中关于马氏性和强马氏性的证明依次得到<br>
+<strong>定理4.1.2</strong> 任何非负或有界的随机变量<span
+class="math inline">\(\rm Y,n\geq 0,x\in E\)</span><br> <span
+class="math display">\[\rm \mathbb{E}^x(Y\circ
+\theta_n|\mathcal{F}_n)=\mathbb{E}^{X_n}(Y)\]</span>
+<strong>定理4.1.3</strong> 设<span
+class="math inline">\(\tau\)</span>是一个停时，则<span
+class="math inline">\(\rm \forall B\in\mathcal{F},x\in E\)</span>有<br>
+<span class="math display">\[\rm\mathbb{E}^x(1_B\circ
+\theta_{\tau};\tau\lt\infty|\mathcal{F}_\tau)=\mathbb{E}^{X_\tau}(1_B)1_{\{\tau\lt\infty\}}\]</span>
+  下面我们主要讨论转移函数的性质。现在给定转移函数<span
+class="math inline">\((\rm p_{x,y})\)</span>与对应的马氏链，<span
+class="math inline">\(\rm X=(X_n),(\mathbb{P}^x)\)</span>；记<span
+class="math inline">\(\rm n\)</span>步转移概率<span
+class="math inline">\(\rm
+p^{(n)}_{x,y}:=\mathbb{P}^x(X_n=y),n\geq0,x,y\in E\)</span>显然<span
+class="math inline">\(\rm
+p^{(0)}_{x,y}=1_{\{x=y\}},p^{(1)}=p\)</span>；事实上<span
+class="math inline">\(\rm p^{(n)}\)</span>并不难刻画<br>
+<strong>引理4.1.4</strong> （Chapman-Kolmogorov）<span
+class="math inline">\(\rm\forall n,m\geq 0,x,y\in E\)</span>有<br> <span
+class="math display">\[\rm p_{x,y}^{(n+m)}=\sum_{z\in
+E}p^{(n)}_{x,z}p^{(m)}_{z,y}\]</span> 也即是作为转移矩阵的<span
+class="math inline">\(\rm p^{(n)}=p^n\)</span><br> <strong>定义</strong>
+设<span class="math inline">\(\rm x,y\in E\)</span>如果存在<span
+class="math inline">\(\rm n\geq0,p^{(n)}_{x,y}\gt 0\)</span>则称<span
+class="math inline">\(\rm x\)</span>可达<span class="math inline">\(\rm
+y\)</span>，直观上即可以到达；如果<span class="math inline">\(\rm
+x\)</span>可达<span class="math inline">\(\rm y\)</span>且<span
+class="math inline">\(\rm y\)</span>可达<span class="math inline">\(\rm
+x\)</span>，则称<span class="math inline">\(\rm
+x,y\)</span>互达。称马氏链<span class="math inline">\(\rm
+X\)</span>不可分，如果任何两个状态可以互达。<br>
+  事实上结合引理4.1.4，自然可以推出互达的反身性，对称性和传递性，于是事实上互达是一个等价关系。也就是说，我们可以按互达将<span
+class="math inline">\(\rm
+E\)</span>划分为若干等价类，“不可分”即只有一个等价类。<br>
+  接下来还是研究马氏链的首中时。对<span class="math inline">\(\rm y\in
+E\)</span>令<span class="math inline">\(\rm
+\tau_y=\inf\{n\geq1:X_n=y\}\)</span>（约定<span
+class="math inline">\(\inf\emptyset =\infty\)</span>）称为状态<span
+class="math inline">\(\rm y\)</span>的首中时。容易验证<span
+class="math inline">\(\rm \tau_y\)</span>是一个停时。对<span
+class="math inline">\(\rm n\geq 0\)</span>，令<span
+class="math inline">\(\rm
+f^{(n)}_{x,y}:=\mathbb{P}^x(\tau_y=n)\)</span>显然<span
+class="math inline">\(\rm f^{(n)}_{x,y}\leq
+p^{(n)}_{x,y}\)</span>于是结合马氏性和之前关于首达概率公式的证明，自然有<br>
+<strong>定理4.1.5</strong> 对<span class="math inline">\(\rm
+n\geq1,x,y\in E\)</span>有<br> <span class="math display">\[\rm
+p^{(n)}_{x,y}=\sum^n_{k=1}f^{(k)}_{x,y}p^{(n-k)}_{y,y}\]</span>
+  再定义<span class="math inline">\(\rm
+f_{x,y}:=\mathbb{P}^x(\tau_x\lt\infty)=\sum_{n\geq1}f^{(n)}_{x,y}\)</span>是过程从<span
+class="math inline">\(\rm x\)</span>经有限步抵达<span
+class="math inline">\(\rm y\)</span>的概率。</p>
+<h1 id="常返态与暂留态">常返态与暂留态</h1>
+<p>  在这一节中我们试图将简单随机游动中的首次返回时结果迁移过来。具体来说，我们想判断从某一点开始的首次返回时不为<span
+class="math inline">\(\infty\)</span>的概率有多大。<br>
+<strong>定义</strong> 一个状态<span class="math inline">\(\rm x\in
+E\)</span>被称为常返的，如果<span class="math inline">\(\rm
+x\)</span>出发以概率<span class="math inline">\(1\)</span>回到<span
+class="math inline">\(\rm x\)</span>，即<span class="math inline">\(\rm
+f_{x,x}=1\)</span>，否则称其为暂留。如果所有状态常返，则称该马氏链常返，同理如果所有状态暂留，则称马氏链暂留。<br>
+  接下来我们研究第<span class="math inline">\(\rm
+k\)</span>次返回的时间。对<span class="math inline">\(\rm y\in
+E\)</span><br> <span class="math display">\[\rm
+\tau^{(0)}:=0,\tau_y^{(k)}:=\tau_y+\tau_y^{(k-1)}\circ\theta_{\tau_y},k\geq1\]</span>
+根据推移算子的性质，这里的<span class="math inline">\(\rm
+\tau_y^{(k)}\)</span>即为第<span class="math inline">\(\rm
+k\)</span>次访问<span class="math inline">\(\rm
+y\)</span>的时间，为停时。根据强马氏性：<br> <span
+class="math display">\[
+\begin{align*}
+    \rm\mathbb{P}^x(\tau_y^{(k)}\lt\infty)&amp;=\rm\mathbb{P}^x(\tau_y\lt\infty;\,\tau_y^{(k-1)}\circ\theta_{\tau_y}\lt\infty)\\
+    &amp;=\rm\mathbb{E}^x(\mathbb{P}^{X_{\tau_y}}(\tau_y^{(k-1)}\lt\infty);\tau_y\lt\infty)\\
+    &amp;=\rm
+f_{x,y}\mathbb{P}^y(\tau_y^{(k-1)}\lt\infty)=\cdots=f_{x,y}f_{y,y}^{k-1}
+\end{align*}
+\]</span> <strong>引理4.2.1</strong> <span
+class="math inline">\(\rm\forall x,y\in E,k\geq1\)</span>有<br> <span
+class="math display">\[\rm\mathbb{P}^x(\tau_y^{(k)}\lt\infty)=f_{x,y}f_{y,y}^{k-1}\]</span>
+我们基于此进一步刻画常返和暂留：<br> <strong>定理4.2.2</strong>
+我们有以下常返和暂留的等价条件：<br> （1）状态<span
+class="math inline">\(\rm x\)</span>常返<span
+class="math inline">\(\iff\rm\mathbb{P}^x(\overline{\lim}_n\{X_n=x\})=1\iff\sum_np^{(n)}_{x,x}=\infty\)</span><br>
+（2）状态<span class="math inline">\(\rm x\)</span>暂留<span
+class="math inline">\(\iff\rm\mathbb{P}^x(\overline{\lim}_n\{X_n=x\})=0\iff\sum_np^{(n)}_{x,x}\lt\infty\)</span><br>
+<strong>证明</strong> 在上述引理中令<span class="math inline">\(\rm
+y=x\)</span>于是<br> <span class="math display">\[
+\begin{equation*}
+\rm\mathbb{P}^x(\overline{\lim}_n\{X_n=x\})=lim_kf_{x,x}^k=\left\{
+    \begin{aligned}
+    0\quad \rm f_{x,x}\lt 1\\
+    1\quad \rm f_{x,x}=1\\
+    \end{aligned}
+    \right
+    .
+\end{equation*}
+\]</span> 于是只需证明<span class="math inline">\(\rm f_{x,x}\lt
+1\iff\sum_np_{x,x}^{(n)}\lt\infty\)</span>结合首达概率公式和数列变形即得。<br>
+  我们进一步地将这个结果推广到互达情况下。<br>
+<strong>定理4.2.3</strong> 如果<span class="math inline">\(\rm x,y\in
+E\)</span>互达，则下列两者之一成立：<br> （1）<span
+class="math inline">\(\rm x,y\)</span>都常返，<span
+class="math inline">\(\rm\mathbb{P}^x(\overline{\lim}_n\{X_n=y\})=1,\sum_np^{(n)}_{x,y}=\infty\)</span><br>
+（2）<span class="math inline">\(\rm x,y\)</span>都暂留，<span
+class="math inline">\(\rm\mathbb{P}^x(\overline{\lim}_n\{X_n=y\})=0,\sum_np^{(n)}_{x,y}\lt\infty\)</span><br>
+<strong>证明</strong> 我们依次证明两个性质。首先如果<span
+class="math inline">\(\rm x,y\)</span>互达，存在<span
+class="math inline">\(\rm i,j\geq1\)</span>使得<span
+class="math inline">\(\rm p^{(i)}_{x,y}\cdot p^{(j)}_{y,x}\gt
+0\)</span>而<span class="math inline">\(\rm \forall n\geq1\)</span><br>
+<span class="math display">\[\rm p^{(i+n+j)}_{x,x}\geq
+p_{x,y}^{(i)}p^{(n)}_{y,y}p^{(j)}_{y,x},p^{(i+n+j)}_{y,y}\geq
+p_{x,y}^{(i)}p^{(n)}_{x,x}p^{(j)}_{y,x}\]</span>
+于是结合定理4.2.2我们得到<span class="math inline">\(\rm
+x,y\)</span>都是暂留的或者都是常返的。再根据首达概率公式<br> <span
+class="math display">\[
+\begin{align*}
+    \rm \sum_{n=1}^\infty p^{(n)}_{x,y}&amp;=\rm
+\sum^\infty_{n=1}\sum_{k=1}^nf^{(k)}_{x,y}p^{(n-k)}_{y,y}\\
+    &amp;=\rm \sum^\infty_{k=1}f^{(k)}_{x,y}\sum_{n=k}^\infty
+p^{(n-k)}_{y,y}\\
+    &amp;=\rm f_{x,y}\sum_{n=1}^\infty p^{(n)}_{y,y}
+\end{align*}
+\]</span> 于是其在<span class="math inline">\(\rm
+y\)</span>常返时为无限，否则有限。再由引理4.2.1<br> <span
+class="math display">\[\rm\mathbb{P}^x(\overline{\lim}_n\{X_n=y\})=f_{x,y}\rm\mathbb{P}^x(\overline{\lim}_n\{X_n=y\})\]</span>
+所以实质上只需验证在<span class="math inline">\(\rm
+y\)</span>常返时由<span class="math inline">\(\rm f_{x,y}=1\)</span><br>
+  具体思路是基于一个基本的观察——<span class="math inline">\(\rm
+y\)</span>常返时从直观上来说从<span class="math inline">\(\rm
+y\)</span>出发会无穷多次访问<span class="math inline">\(\rm
+y\)</span>，即<span class="math inline">\(\rm
+\mathbb{P}^y(\tau_y\circ\theta_k\lt\infty)=1\)</span>，在此基础上用马氏性得到<br>
+<span class="math display">\[\rm
+p_{y,x}^{(k)}=\mathbb{P}^y(X_k=x)=\mathbb{P}^y(X_k=x,\tau_y\circ\theta_k\lt\infty)=\mathbb{E}^y(\mathbb{P}^{X_k}(\tau_y\lt\infty);X_k=x)=f_{x,y}p_{y,x}^{(k)}\]</span>
+结合<span class="math inline">\(\rm y\)</span>可达<span
+class="math inline">\(\rm x\)</span>即得结论。<br>
+  基于上述结论。我们直接得到<br> <strong>推论4.2.4</strong> 如果<span
+class="math inline">\(\rm y\)</span>常返且<span
+class="math inline">\(\rm y\)</span>可达<span class="math inline">\(\rm
+x\)</span>，则<span class="math inline">\(\rm x\)</span>可达<span
+class="math inline">\(\rm y\)</span><br>
+  同时定理断言两个互达状态都常返或者都暂留，属于同一类，这种性质叫做类性质。<br>
+  接下来我们来研究更一般的对称简单随机游动，即在<span
+class="math inline">\(\rm
+d\)</span>维网格上的对称简单随机游动。事实上，我们可以有如下定理：<br>
+<strong>定理4.2.5</strong> （Polya）<span class="math inline">\(\rm
+d\)</span>-维对称简单随机游动当<span class="math inline">\(\rm
+d=1,2\)</span>时常返，<span class="math inline">\(\rm d\geq
+3\)</span>时暂留。</p>
+<h1 id="正常返和遍历性">正常返和遍历性</h1>
+<p>  常返指首中时有限，为了进一步区分常返的类型，我们引入正常返和零常返的概念。<br>
+<strong>定义</strong> 设状态<span class="math inline">\(\rm
+y\)</span>为常返的，称它为正常返的，如果平均回转时间有限，即<br> <span
+class="math display">\[\rm\mathbb{E}^y(\tau_y)=\sum_{n\geq1}nf_{y,y}^{(n)}\lt\infty\]</span>
+否则称<span class="math inline">\(\rm y\)</span>为零常返。<br>
+  一般来说，一个周期地发生的事件，平吕等于周期的倒数。当<span
+class="math inline">\(\rm x\)</span>是常返时，访问<span
+class="math inline">\(\rm
+x\)</span>差不多就是一个周期事件，所以其频率应该时周期的倒数，也即单位时间访问<span
+class="math inline">\(\rm
+x\)</span>的次数应该与平均回转时间的倒数差不多。我们给出以下定理，且显然这个定理在<span
+class="math inline">\(\rm x\)</span>暂留时也成立<br>
+<strong>定理4.3.1</strong> 对常返态<span class="math inline">\(\rm x\in
+E\)</span>，有<br> <span class="math display">\[\rm lim_n {1\over
+n}\sum_{k=1}^n 1_{\{X_k=x\}}=lim_n {1\over
+n}\sum_{k=1}^np_{x,x}^{(k)}={1\over \mathbb{E}^x\tau_x}\]</span>
+其中第一个极限是<span class="math inline">\(\rm
+\mathbb{P}^x\)</span>几乎处处意义下的。右边的量记作<span
+class="math inline">\(\rm\mu_x\)</span>，分母为无穷时等于0<br>
+<strong>证明</strong> 令<span class="math inline">\(\rm
+S_n:=\sum_{k=1}^n 1_{\{X_k=x\}}\)</span>，是<span
+class="math inline">\(1\)</span>到<span class="math inline">\(\rm
+n\)</span>时刻<span class="math inline">\(\rm X\)</span>访问<span
+class="math inline">\(\rm x\)</span>的次数，那么自然有<br> <span
+class="math display">\[\rm\sum_{k=1}^np_{x,x}^{(k)}=\mathbb{E}^xS_n\]</span>
+用<span class="math inline">\(\rm T_n\)</span>表示<span
+class="math inline">\(\rm X\)</span>第<span class="math inline">\(\rm
+n\)</span>次访问<span class="math inline">\(\rm x\)</span>的时间，<span
+class="math inline">\(\rm T_0=0\)</span><br> <span
+class="math display">\[\rm
+\xi_n:=T_n-T_{n-1}=\tau_x\circ\theta_{T_{n-1}}\]</span>
+我们的基本观察是以下引理<br> <strong>引理4.3.2</strong> 在概率<span
+class="math inline">\(\rm \mathbb{P}^x\)</span>下，<span
+class="math inline">\(\rm
+\xi_1,\cdots,\xi_n,\cdots\)</span>是独立同分布序列。
+  这个引理的证明在对于马氏性的运用下并不困难，我们进一步利用这一性质。事实上对<span
+class="math inline">\(\rm n\geq1,k\geq0\)</span>有<span
+class="math inline">\(\rm\{S_n=k\}=\{T_k\leq n\lt
+T_{n+1}\}\)</span>，也就是我们有<br> <span class="math display">\[\rm
+T_{S_n}\leq n\lt T_{S_n+1}\]</span> 于是<br> <span
+class="math display">\[\rm {S_n\over T_{S_n+1}}\lt {S_n\over n}\leq
+{S_n\over T_{S_n}}\]</span> 上述不等式中令<span
+class="math inline">\(\rm n\to \infty\)</span>，由强大数定律得到<span
+class="math inline">\(\rm {T_n\over n}\to
+\mathbb{E}^x\tau_x\)</span>，于是<span class="math inline">\(\rm
+{S_n\over n}\)</span>几乎处处的极限是<span class="math inline">\(\rm
+\mu_x\)</span>,进而由控制收敛定理即得定理结论。<br>
+  从定理可以看出状态<span class="math inline">\(\rm
+x\)</span>正常返当且仅当<span class="math inline">\(\rm lim_n {1\over
+n}\sum_{k=1}^np_{x,x}^{(k)}\gt 0\)</span><br> 如果<span
+class="math inline">\(\rm x,y\)</span>互达，存在非负整数<span
+class="math inline">\(\rm s,t\)</span>使得<span
+class="math inline">\(\rm
+p_{x,y}^{(s)}\gt0,p_{y,x}^{(t)}\gt0\)</span>，则<br> <span
+class="math display">\[\rm  {1\over
+n}\sum_{k=1}^np_{x,x}^{(s+k+t)}\geq  p_{x,y}^{(s)}({1\over
+n}\sum_{k=1}^np_{x,x}^{(k)})p_{y,x}^{(t)}\]</span>
+由此得出两者平均极限都是正的或都是零，也即<br>
+<strong>推论4.3.3</strong> 正常返也是类性质。<br> <strong>注：</strong>
+上面的定理只能保证平均极限存在，但<span class="math inline">\(\rm
+\lim_np_{x,x}^{(n)}\)</span>不一定存在，主要原因是周期的问题。我们不加证明地给出结论，在马氏链非周期时，该极限存在。</p>
+<h1 id="不变测度与平稳分布">不变测度与平稳分布</h1>
 
     </div>
 
@@ -328,7 +593,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A9%AC%E6%B0%8F%E9%93%BE%E4%B8%8E%E8%BD%AC%E7%A7%BB%E5%87%BD%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">马氏链与转移函数</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A9%AC%E6%B0%8F%E9%93%BE%E4%B8%8E%E8%BD%AC%E7%A7%BB%E5%87%BD%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">马氏链与转移函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E8%BF%94%E6%80%81%E4%B8%8E%E6%9A%82%E7%95%99%E6%80%81"><span class="nav-number">2.</span> <span class="nav-text">常返态与暂留态</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A3%E5%B8%B8%E8%BF%94%E5%92%8C%E9%81%8D%E5%8E%86%E6%80%A7"><span class="nav-number">3.</span> <span class="nav-text">正常返和遍历性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8D%E5%8F%98%E6%B5%8B%E5%BA%A6%E4%B8%8E%E5%B9%B3%E7%A8%B3%E5%88%86%E5%B8%83"><span class="nav-number">4.</span> <span class="nav-text">不变测度与平稳分布</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
