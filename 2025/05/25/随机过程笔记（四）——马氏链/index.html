@@ -28,7 +28,7 @@
 <meta property="og:description" content="马氏链与转移函数   我们已经在第二章的最后看到了马氏性的定义，即\(\rm \mathbb{P}^x(X_{n+1}&#x3D;y|X_i&#x3D;x_i,0\leq i\leq n)&#x3D;\mathbb{P}(X_{n+1}&#x3D;y|X_n&#x3D;x_n)\)，也就是只依赖于现在的位置。另一方面，概率\(\rm\mathbb{P}(X_{n+1}&#x3D;y|X_n&#x3D;x_n)\)也可能与时间\(\rm n\)有关，而如果事实上这">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-05-25T05:49:55.000Z">
-<meta property="article:modified_time" content="2025-06-01T12:52:57.580Z">
+<meta property="article:modified_time" content="2025-06-03T07:29:51.517Z">
 <meta property="article:author" content="Gongyi Zhuo">
 <meta property="article:tag" content="数学">
 <meta property="article:tag" content="随机分析">
@@ -198,7 +198,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-06-01 20:52:57" itemprop="dateModified" datetime="2025-06-01T20:52:57+08:00">2025-06-01</time>
+                <time title="修改时间：2025-06-03 15:29:51" itemprop="dateModified" datetime="2025-06-03T15:29:51+08:00">2025-06-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -443,7 +443,23 @@ d\)</span>维网格上的对称简单随机游动。事实上，我们可以有�
 <strong>定理4.2.5</strong> （Polya）<span class="math inline">\(\rm
 d\)</span>-维对称简单随机游动当<span class="math inline">\(\rm
 d=1,2\)</span>时常返，<span class="math inline">\(\rm d\geq
-3\)</span>时暂留。</p>
+3\)</span>时暂留。<br>   具体证明略去，证明思路是依次证明<span
+class="math inline">\(\rm d=2\)</span>常返，<span
+class="math inline">\(\rm d=3\)</span>暂留，然后证明<span
+class="math inline">\(\rm
+\mathbb{P}^0(\tau^{(d+1)}\lt\infty)\leq\mathbb{P}^0(\tau^{(d)}\lt\infty)\)</span>（通过投影），进而得出结论。<br>
+  接下来我们想要把一个马氏链成几个分支，之前我们看到互达是等价关系，但互达等价类不是好的分类，因为分类间仍会相连，无法把转移函数限制在分支上使其仍为转移函数。<br>
+<strong>定义</strong> 设<span class="math inline">\(\rm
+(p_{x,y})\)</span>为<span class="math inline">\(\rm
+E\)</span>上转移函数<br> 1. 子集<span class="math inline">\(\rm C\subset
+E\)</span>是闭的，如果<span class="math inline">\(\rm \forall x\in
+C,\sum_{y\in C}p_{x,y}=1\)</span><br> 2. 两个状态<span
+class="math inline">\(\rm x,y\)</span>称为相邻的如果<span
+class="math inline">\(\rm p_{x,y}\gt 0\)</span>或<span
+class="math inline">\(\rm
+p_{y,x}\gt0\)</span>；称为连通的，如果存在<span
+class="math inline">\(\rm
+x=x_0,x_1,\cdots,x_n=y\)</span>依次相邻。连通分支指一个连通等价类。<br></p>
 <h1 id="正常返和遍历性">正常返和遍历性</h1>
 <p>  常返指首中时有限，为了进一步区分常返的类型，我们引入正常返和零常返的概念。<br>
 <strong>定义</strong> 设状态<span class="math inline">\(\rm
@@ -507,6 +523,170 @@ n}\sum_{k=1}^np_{x,x}^{(k)})p_{y,x}^{(t)}\]</span>
 上面的定理只能保证平均极限存在，但<span class="math inline">\(\rm
 \lim_np_{x,x}^{(n)}\)</span>不一定存在，主要原因是周期的问题。我们不加证明地给出结论，在马氏链非周期时，该极限存在。</p>
 <h1 id="不变测度与平稳分布">不变测度与平稳分布</h1>
+<p>  本节介绍与正常返密切相关地不变测度与平稳分布。让我们从测度开始，<span
+class="math inline">\(\rm E\)</span>上的一个测度等同于<span
+class="math inline">\(\rm E\)</span>上一个非负（可能取值无穷）函数<span
+class="math inline">\(\rm \mu=(\mu_x)\)</span>，<span
+class="math inline">\(\rm E\)</span>上一个<span
+class="math inline">\(\sigma\)</span>-有限测度等同于一个非负函数。笔记中所说的测度总是<span
+class="math inline">\(\sigma\)</span>-测度，说测度非零或非平凡是指其不恒等于零。<br>
+<strong>定义</strong> <span class="math inline">\(\rm
+E\)</span>上一个非零测度<span class="math inline">\(\rm \mu=(\mu_y:y\in
+E)\)</span>称为是转移矩阵<span class="math inline">\(\rm
+P\)</span>的或对应的马氏链的不变测度，如果<br> <span
+class="math display">\[\rm\sum_{x\in E}\mu_xp_{x,y}=\mu_y,y\in
+E\]</span> 如果不变测度<span
+class="math inline">\(\mu\)</span>是一个概率分布，那么我们说它是平稳分布。<br>
+<strong>引理4.4.1</strong> 一个不可分且有平稳分布的马氏链<span
+class="math inline">\(\rm X\)</span>是常返的。<br> <strong>证明</strong>
+设<span
+class="math inline">\(\mu\)</span>是平稳分布。由平稳分布的定义，<span
+class="math inline">\(\rm \forall n\geq1,\)</span><br> <span
+class="math display">\[\rm\sum_{x\in E}\mu_xp^{(n)}_{x,y}=\mu_y,y\in
+E\]</span> 假设<span class="math inline">\(\rm
+X\)</span>暂留（注意由常返的类性质，不可分马氏链一定是常返的或暂留的），则<span
+class="math inline">\(\rm
+\lim_np_{x,y}^{(n)}=0\)</span>，由控制收敛定理，<span
+class="math inline">\(\rm \forall y\in E,\mu_y=0\)</span>，矛盾。<br>
+  我们接着说明马氏链的不变测度的存在唯一性，当然这里的唯一是缩放意义下的，也可以认为是其平稳分布唯一。<br>
+<strong>定理4.4.2</strong> 不可分常返马氏链的不变测度存在且唯一。<br>
+<strong>证明</strong> 设<span class="math inline">\(\rm
+X\)</span>为不可分常返马氏链，具有转移概率<span
+class="math inline">\(\rm (p_{x,y})\)</span>，先来说明存在性：<br>
+  任取点<span class="math inline">\(\rm o\in
+E,\tau:=\inf\{n\geq1:X_n=o\}\)</span>，再对任何<span
+class="math inline">\(\rm x\in E\)</span>定义<span
+class="math inline">\(\rm q_{o,x}(n):=\mathbb{P}^o(X_n=x,n\leq
+\tau)\)</span>为在第<span class="math inline">\(\rm
+n\)</span>步时在<span class="math inline">\(\rm x\)</span>且未返回<span
+class="math inline">\(\rm o\)</span>的概率，进而给出构造<br> <span
+class="math display">\[\rm \mu_x:=\sum_{n\geq
+1}q_{o,x}^{(n)}=\mathbb{E}^o[\sum_{n=1}^\tau1_{\{X_n=x\}}]\]</span>
+下面证明<span class="math inline">\(\rm (\mu_x)\)</span>即为<span
+class="math inline">\(\rm X\)</span>的不变测度。直观看，<span
+class="math inline">\(\rm \mu_x\)</span>就是从<span
+class="math inline">\(\rm o\)</span>出发首次回到<span
+class="math inline">\(\rm o\)</span>这段时间马氏链访问<span
+class="math inline">\(\rm x\)</span>的平均次数。<br>   首先<span
+class="math inline">\(\rm X\)</span>常返说明<span
+class="math inline">\(\rm \mu_o=1\)</span>，其次<span
+class="math inline">\(\rm \{\tau\geq n\}=\{\tau\lt
+n\}^c\in\mathcal{F}_{n-1}\)</span>，由马氏性当<span
+class="math inline">\(\rm n\geq 1\)</span>时<br> <span
+class="math display">\[
+\begin{align*}
+    \rm
+q_{o,x}^{(n)}&amp;=\rm\mathbb{P}^o(X_1\circ\theta_{n-1}=x;n\leq\tau)\\
+    &amp;=\rm\mathbb{E}^o(\mathbb{P}^{X_{n-1}}(X_1=x);n\leq\tau)\\
+    &amp;=\rm\sum_y\mathbb{P}^o(\{X_n-1=y,n\leq\tau\})p_{y,x}
+\end{align*}
+\]</span> 对<span class="math inline">\(\rm n\)</span>求和得到<br> <span
+class="math display">\[\rm\mu_x=\sum_y\sum_{n=1}^\tau\mathbb{P}^o(\{X_n-1=y,n\leq\tau\})p_{y,x}=\sum_y\mu_yp_{y,x}\]</span>
+这就证明了<span
+class="math inline">\(\rm(\mu_x)\)</span>为不变测度。<br>
+  接着来看唯一性：设<span class="math inline">\(\rm (v_x:x\in
+E)\)</span>也是<span class="math inline">\(\rm
+X\)</span>的非零不变测度，则他们都是正的，定义关于<span
+class="math inline">\(\rm (v_x)\)</span>对偶的转移概率<br> <span
+class="math display">\[\rm \hat{p}_{x,y}:={v_y\over v_x}p_{y,x},x,y\in
+E\]</span> 由不变测度的性质推出<span
+class="math inline">\((\rm\hat{p}_{x,y}:x,y\in
+E)\)</span>也是转移函数，对应的马氏链也实现在同样的样本空间和随机序列<span
+class="math inline">\(\rm (X_n)\)</span>上，对应概率<span
+class="math inline">\((\rm
+\hat{\mathbb{P}}^x)\)</span>，称为对偶马氏链，对应的量用<span
+class="math inline">\(\ \hat{\cdot}\ \)</span>表示，显然对任何<span
+class="math inline">\(\rm n\geq1\)</span><br> <span
+class="math display">\[\rm \hat{p}_{x,y}^{(n)}:={v_y\over
+v_x}p_{y,x}^{(n)}\]</span> 且<span class="math inline">\(\rm
+\hat{p}_{x,x}^{(n)}=p_{x,x}^{(n)}\)</span>，于是对偶马氏链也是不可分常返的。<br>
+  任取点<span class="math inline">\(\rm
+x=x_0,x_1,\cdots,x_{n-1},x_n=y\)</span>，重复用<span
+class="math inline">\(\rm v_x\hat{p}_{x,y}=v_yp_{y,x}\)</span>得到<br>
+<span class="math display">\[\rm
+v_x\hat{p}_{x,x_1}\cdots\hat{p}_{x_{n-1},y}=v_yp_{y,x_{n-1}}\cdots
+p_{x_1,x}\]</span> 也即<br> <span class="math display">\[\rm
+v_x\hat{\mathbb{P}}^x(X_j=x_j,0\lt j\lt
+n,X_n=y)=v_y\mathbb{P}^y(X_{n-j}=x_j,0\lt j\lt n,X_n=x)\]</span> 取<span
+class="math inline">\(\rm y=o\)</span>即<br> <span
+class="math display">\[\rm v_x\hat{\mathbb{P}}^x(X_j\not=o,0\lt j\lt
+n,X_n=y)=v_y\mathbb{P}^y(X_{n-j}=x_j,0\lt j\lt n,X_n=x)\]</span> 而<span
+class="math inline">\(\rm \{n\leq\tau\}=\{X_j\not=o,0\lt j\lt
+n\}\)</span>，故<br> <span class="math display">\[\rm
+v_x\hat{f}_{x,o}^{(n)}=v_x\hat{\mathbb{P}}^x(n\leq\tau,X_n=o)=v_o\mathbb{P}^o(n\leq\tau,X_n=x)=v_oq_{o,x}^{(n)}\]</span>
+两边对<span class="math inline">\(\rm
+n\)</span>求和，右边根据常返性为<span class="math inline">\(\rm
+v_x\)</span>左边则是<span class="math inline">\(\rm
+v_o\cdot\mu_x\)</span>于是<span class="math inline">\(\rm
+v_x=v_o\cdot\mu_x\)</span>对所有<span class="math inline">\(\rm x\in
+E\)</span>成立，这就证明了唯一性。<br>
+  那进一步的，我们来考虑什么时候有平稳分布。注意<span
+class="math inline">\(\rm \sum_x\mu_x=\mathbb{E}^o\tau\)</span>且<span
+class="math inline">\(\rm
+\mu_o=1\)</span>如果有一个状态正常返，则由类性质均正常返，则不变测度有限，平稳分布存在唯一。反之自然有<span
+class="math inline">\(\rm \mathbb{E}^o\tau\lt \infty\)</span>即<span
+class="math inline">\(\rm o\)</span>正常返，所有状态正常返。<br>
+<strong>推论4.4.3</strong> 我们将上述讨论的关于不可分常返马氏链<span
+class="math inline">\(\rm X\)</span>的结论总结如下<br> 1.
+所有状态都是正常返地或者所有状态都是零常返的。<br> 2.
+它是正常返的当且仅当它有平稳分布，且此时<span class="math inline">\(\rm
+\pi_x={1\over \mathbb{E}^x{\tau_x}},x\in E\)</span><br></p>
+<h1 id="可逆马氏链和电路图">可逆马氏链和电路图</h1>
+<p>  我们接下来讨论一类非常特殊的马氏链，即可逆马氏链，它也被称为对称马氏链，即有对称测度的马氏链。我们试图将这种马氏链与物理中的电路图联系起来，以得出有趣的结论和简便的计算方式。我们还是先来看看可逆马氏链的定义。<br>
+  设<span class="math inline">\(\rm
+X=\{X_n:n\geq0\}\)</span>是状态空间<span class="math inline">\(\rm
+S\)</span>上一个马氏链，转移函数为<span class="math inline">\(\rm
+(p(x,y))\)</span>（这里为了符号协调使用<span class="math inline">\(\rm
+p(x,y)\)</span>而非<span class="math inline">\(\rm
+p_{x,y}\)</span>，这也许让它更像一个函数）一般我们说一个函数对称是有<span
+class="math inline">\(\rm
+p(x,y)=p(y,x)\)</span>，按照这个定义对称随机游动自然是对称的，但这个定义过于狭窄，我们来引入转移函数关于一个测度对称的概念。<br>
+<strong>定义</strong> 如果存在<span class="math inline">\(\rm
+S\)</span>上的严格正测度<span
+class="math inline">\(\pi\)</span>使得<span
+class="math inline">\(\rm\forall x,y\in
+S,\pi(x)p(x,y)=\pi(y)p(y,x)\)</span>，则称<span
+class="math inline">\(\rm X\)</span>或其转移函数在<span
+class="math inline">\(\rm S\)</span>上可逆（或者<span
+class="math inline">\(\pi\)</span>-对称），<span
+class="math inline">\((\rm \pi(x):x\in S)\)</span>被称为对称测度。<br>
+  这给定义还非常抽象，我们进一步地研究这个性质，容易想到上面的对称容易受到测度<span
+class="math inline">\(\pi\)</span>影响，希望能够在转移函数内部考虑，也即是把两边的<span
+class="math inline">\(\pi\)</span>消去。于是考虑一个从<span
+class="math inline">\(\rm x\)</span>回到<span class="math inline">\(\rm
+x\)</span>的路径<span class="math inline">\(\rm
+x=x_0,x_1,\cdots,x_{n-1},x_n=x\)</span>，那么<br> <span
+class="math display">\[\rm \pi(x)p(x_0,x_1)\cdots
+p(x_{n-1},x_n)=p(x_1,x_0)\pi(x_1)p(x_1,x_2)\cdots
+p(x_{n-1},x_n)=\pi(x)p(x_n,x_{n-1})\cdots p(x_1,x_0)\]</span> 也即<br>
+<span
+class="math display">\[\rm\prod^n_{i=1}p(x_{i-1},x_i)=\prod^n_{i=1}p(x_i,x_{i-1})\]</span>
+也就是说<span class="math inline">\(\rm
+X\)</span>沿贿赂转移的概率与方向无关。这个性质被叫做Kolmogorov回路测试。反过来，如果<span
+class="math inline">\(\rm
+X\)</span>不可分且满足Kolmogorov回路测试，那么<span
+class="math inline">\(\rm X\)</span>可逆。<br>   具体来说任取<span
+class="math inline">\(\rm x\in S\)</span>，取<span
+class="math inline">\(\rm\pi(x)=1\)</span>，因为<span
+class="math inline">\(\rm X\)</span>的不可分性，<span
+class="math inline">\(\rm \forall y\in S\)</span>存在道路<span
+class="math inline">\(\rm x=x_0,x_1,\cdots,x_n=y\)</span>使得<span
+class="math inline">\(\rm p(x_i,x_{i+1})\gt 0,\forall 0\leq i\leq
+n-1\)</span>马氏性给出<span
+class="math inline">\(\rm\mathbb{P}^x(X_i=x_i,1\leq i\leq
+n)=\prod^n_{i=1}p(x_{i-1},x_i)\)</span>为<span class="math inline">\(\rm
+X\)</span>沿上述道路从<span class="math inline">\(\rm
+x\)</span>转移到<span class="math inline">\(\rm
+y\)</span>的概率。再定义<br> <span
+class="math display">\[\rm\pi(y)={\prod^n_{i=1}p(x_{i-1},x_i)\over\prod^n_{i=1}p(x_i,x_{i-1})}\]</span>
+根据<span class="math inline">\(\rm
+X\)</span>沿回路转移概率与方向无关，上述定义与路径无关容易验证<span
+class="math inline">\(\pi\)</span>是对称测度，于是<span
+class="math inline">\(\rm
+X\)</span>是可逆的。所以我们已经证明了以下定理<br>
+<strong>定理4.5.1</strong> 不可分马氏链<span class="math inline">\(\rm
+X\)</span>可逆<span class="math inline">\(\rm\iff
+X\)</span>满足Kolmogorov回路测试。<br></p>
 
     </div>
 
@@ -593,7 +773,7 @@ n}\sum_{k=1}^np_{x,x}^{(k)})p_{y,x}^{(t)}\]</span>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A9%AC%E6%B0%8F%E9%93%BE%E4%B8%8E%E8%BD%AC%E7%A7%BB%E5%87%BD%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">马氏链与转移函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E8%BF%94%E6%80%81%E4%B8%8E%E6%9A%82%E7%95%99%E6%80%81"><span class="nav-number">2.</span> <span class="nav-text">常返态与暂留态</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A3%E5%B8%B8%E8%BF%94%E5%92%8C%E9%81%8D%E5%8E%86%E6%80%A7"><span class="nav-number">3.</span> <span class="nav-text">正常返和遍历性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8D%E5%8F%98%E6%B5%8B%E5%BA%A6%E4%B8%8E%E5%B9%B3%E7%A8%B3%E5%88%86%E5%B8%83"><span class="nav-number">4.</span> <span class="nav-text">不变测度与平稳分布</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A9%AC%E6%B0%8F%E9%93%BE%E4%B8%8E%E8%BD%AC%E7%A7%BB%E5%87%BD%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">马氏链与转移函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E8%BF%94%E6%80%81%E4%B8%8E%E6%9A%82%E7%95%99%E6%80%81"><span class="nav-number">2.</span> <span class="nav-text">常返态与暂留态</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A3%E5%B8%B8%E8%BF%94%E5%92%8C%E9%81%8D%E5%8E%86%E6%80%A7"><span class="nav-number">3.</span> <span class="nav-text">正常返和遍历性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8D%E5%8F%98%E6%B5%8B%E5%BA%A6%E4%B8%8E%E5%B9%B3%E7%A8%B3%E5%88%86%E5%B8%83"><span class="nav-number">4.</span> <span class="nav-text">不变测度与平稳分布</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%AF%E9%80%86%E9%A9%AC%E6%B0%8F%E9%93%BE%E5%92%8C%E7%94%B5%E8%B7%AF%E5%9B%BE"><span class="nav-number">5.</span> <span class="nav-text">可逆马氏链和电路图</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
